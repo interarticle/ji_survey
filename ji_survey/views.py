@@ -7,4 +7,4 @@ import datetime
 import code
 
 def index(request):
-	return render_to_response('abet_alumni_survey/index.j2')
+	return render_to_response('ji_survey/index.j2')

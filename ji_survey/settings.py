@@ -1,4 +1,4 @@
-# Django settings for abet_alumni_survey project.
+# Django settings for ji_survey project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -12,9 +12,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'abet_alumni_survey',                      # Or path to database file if using sqlite3.
+        'NAME': 'ji_survey',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'abet_alumni_survey',
+        'USER': 'ji_survey',
         'PASSWORD': 'devuser2013',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
@@ -102,10 +102,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'abet_alumni_survey.urls'
+ROOT_URLCONF = 'ji_survey.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'abet_alumni_survey.wsgi.application'
+WSGI_APPLICATION = 'ji_survey.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -124,7 +124,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'abet_alumni_survey',
+    'ji_survey',
 )
 
 # A sample logging configuration. The only tangible logging

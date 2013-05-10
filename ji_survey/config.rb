@@ -17,11 +17,11 @@ firesass = false
 
 
 # Location of the theme's resources.
-css_dir         = "static/abet_alumni_survey/css/generated"
+css_dir         = "static/ji_survey/css/generated"
 sass_dir        = "sass"
 extensions_dir  = "sass-extensions"
-images_dir      = "static/abet_alumni_survey/images"
-javascripts_dir = "static/abet_alumni_survey/js"
+images_dir      = "static/ji_survey/images"
+javascripts_dir = "static/ji_survey/js"
 
 
 # Require any additional compass plugins installed on your system.

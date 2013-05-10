@@ -10,7 +10,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="">
-	<title>{% block title %}Survey{% endblock title %}</title>
+	<title>{% block title %}UM-SJTU Joint Institute Survey{% endblock title %}</title>
 	<meta name="description" content="{% block description %}{% endblock %}">
 	<meta name="author" content="{% block author %}{% endblock %}">
 
@@ -19,16 +19,16 @@
 	{% block favicons -%}
 	{# Place favicon.ico & apple-touch-icon.png
 	    in the root of your domain and delete these references #}
-	<link rel="shortcut icon" href="{% static "abet_alumni_survey/images/favicon.ico" %}">
-	<link rel="apple-touch-icon" href="{% static "abet_alumni_survey/images/apple-touch-icon.png" %}">
+	<link rel="shortcut icon" href="{% static "ji_survey/images/favicon.ico" %}">
+	<link rel="apple-touch-icon" href="{% static "ji_survey/images/apple-touch-icon.png" %}">
 	{% endblock favicons -%}
 
 	{% block css -%}
-	<link rel="stylesheet" href="{% static "abet_alumni_survey/css/site.css" %}">
-	<link rel="stylesheet" href="{% static "abet_alumni_survey/css/syntax.css" %}">
+	<link rel="stylesheet" href="{% static "ji_survey/css/site.css" %}">
+	<link rel="stylesheet" href="{% static "ji_survey/css/syntax.css" %}">
 	{% endblock css -%}
 	<!--[if lt IE 9]>
-	<script src="{% static "abet_alumni_survey/js/libs/modernizr-1.7.min.js" %}"></script>
+	<script src="{% static "ji_survey/js/libs/modernizr-1.7.min.js" %}"></script>
 	<![endif]-->
 	{% block headjs -%}
 	{% endblock headjs -%}
@@ -43,7 +43,7 @@
 		<div id="main" role="main">
 			<header id="header" class="banner clearfix">
 				<div id="logo">
-					<img src="{% static "abet_alumni_survey/images/logo.png" %}" alt="">
+					<img src="{% static "ji_survey/images/logo.png" %}" alt="">
 				</div>
 				{% block header -%}
 				<div id="name-and-slogan">
@@ -57,7 +57,7 @@
 				{%- endblock %}
 
 				{% block nav %}
-				{#% from "abet_alumni_survey/macros/menu.j2" import render_nav with context %}
+				{#% from "ji_survey/macros/menu.j2" import render_nav with context %}
 				<div id="navigation">
 					{{ render_nav(site.config.menu, None, 'main-menu') }}
 				</div>
@@ -86,9 +86,8 @@
 		<footer id="footer">
 			{% block footer -%}
 			<div id="footer-wrap">
-				<div id="copyright">
-					&copy; 2013 Hanz Partners
-				</div>
+				Site designed by Zhao Yichen. Contact me at <a href="mailto:interarticle@gmail.com">interarticle@gmail.com</a>
+				<div id="copyright">Copyright &copy; Zhao Yichen, JINET, and respective survey designers.</div>
 			</div>
 			{%- endblock footer %}
 		</footer>
@@ -98,11 +97,11 @@
 	{% block js -%}
 	<!-- Javascript at the bottom for fast page loading -->
 	{%- block jquery -%}
-	<script type="text/javascript" language="javascript" src="{% static "abet_alumni_survey/js/libs/jquery-1.9.1.min.js" %}"></script>
+	<script type="text/javascript" language="javascript" src="{% static "ji_survey/js/libs/jquery-1.9.1.min.js" %}"></script>
 	{% endblock jquery -%}
 
 	{% block scripts -%}
-	<script type="text/javascript" language="javascript" src="{% static 'abet_alumni_survey/js/libs/hide-button.js' %}"></script>
+	<script type="text/javascript" language="javascript" src="{% static 'ji_survey/js/libs/hide-button.js' %}"></script>
 	<script type="text/javascript" language="javascript">
 	$(".hide-button").hideButton();
 	$.hideElements();
@@ -111,11 +110,11 @@
 
 
 	<!--[if lt IE 7 ]>
-	<script src="{% static 'abet_alumni_survey/js/libs/dd_belatedpng.js' %}"></script>
+	<script src="{% static 'ji_survey/js/libs/dd_belatedpng.js' %}"></script>
 	<script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
 	<![endif]-->
 	{% block analytics -%}
-	{% include "abet_alumni_survey/macros/analytics.j2" %}
+	{% include "ji_survey/macros/analytics.j2" %}
 	{% endblock analytics -%}
 
 	{% endblock js %}

@@ -1,0 +1,17 @@
+{% extends "ji_survey/layout/base.j2" %}
+{% block body_classes -%}
+{{ super() }} sidebar-first
+{%- endblock %}
+{% block title -%}
+{{ super() }} - {{ self.survey_name }}
+{%- endblock %}
+{% block content %}
+<h1>{% block survey_name %}Survey{% endblock %}</h1>
+{% block survey %}
+{% endblock %}
+{% endblock content %}
+{% block sidebar_first %}
+<div class="region-sidebar-first">
+	<div class="region-wrap"></div>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
 @echo off
 CD %~dp0
-CD abet_alumni_survey
+CD ji_survey
 LaunchCompass.bat

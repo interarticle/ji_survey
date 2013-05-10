@@ -1,0 +1,123 @@
+<!doctype html>
+<!-- https://github.com/paulirish/html5-boilerplate/blob/master/index.html -->
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+	{% block starthead %}{% endblock starthead %}
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="">
+	<title>{% block title %}Survey{% endblock title %}</title>
+	<meta name="description" content="{% block description %}{% endblock %}">
+	<meta name="author" content="{% block author %}{% endblock %}">
+
+	<meta name="viewport" content="">
+
+	{% block favicons -%}
+	{# Place favicon.ico & apple-touch-icon.png
+	    in the root of your domain and delete these references #}
+	<link rel="shortcut icon" href="{% static "abet_alumni_survey/images/favicon.ico" %}">
+	<link rel="apple-touch-icon" href="{% static "abet_alumni_survey/images/apple-touch-icon.png" %}">
+	{% endblock favicons -%}
+
+	{% block css -%}
+	<link rel="stylesheet" href="{% static "abet_alumni_survey/css/site.css" %}">
+	<link rel="stylesheet" href="{% static "abet_alumni_survey/css/syntax.css" %}">
+	{% endblock css -%}
+	<!--[if lt IE 9]>
+	<script src="{% static "abet_alumni_survey/js/libs/modernizr-1.7.min.js" %}"></script>
+	<![endif]-->
+	{% block headjs -%}
+	{% endblock headjs -%}
+	{% block endhead %}{% endblock endhead %}
+</head>
+<body class="{% block body_classes %}{% endblock %}">
+	{% block page -%}
+	<div id="page">
+		{% block container %}
+		{% block before_main %}
+		{% endblock before_main %}
+		<div id="main" role="main">
+			<header id="header" class="banner clearfix">
+				<div id="logo">
+					<img src="{% static "abet_alumni_survey/images/logo.png" %}" alt="">
+				</div>
+				{% block header -%}
+				<div id="name-and-slogan">
+					<h1 id="site-name">
+						UM-SJTU Joint Institute Survey
+					</h1>
+					<h3 id="site-slogan">
+						
+					</h3>
+				</div>
+				{%- endblock %}
+
+				{% block nav %}
+				{#% from "abet_alumni_survey/macros/menu.j2" import render_nav with context %}
+				<div id="navigation">
+					{{ render_nav(site.config.menu, None, 'main-menu') }}
+				</div>
+				#}
+				{% endblock %}
+			</header>
+			<section id="content" class="content">
+				{% block content_wrap %}
+				<div id="content-wrap-outer">
+					<div id="content-wrap" class="region-wrap">
+						{% block content %}
+						{% endblock content %}
+					</div>
+				</div>
+				{% endblock content_wrap %}
+			</section>
+			{% block sidebar_first %}
+			{% endblock sidebar_first %}
+			{% block sidebar_second %}
+			{% endblock sidebar_second %}
+			{# IE7 Overflow Fix #}
+			<div style="clear: both"></div>
+		</div>
+		{% block after_main %}
+		{% endblock after_main %}
+		<footer id="footer">
+			{% block footer -%}
+			<div id="footer-wrap">
+				<div id="copyright">
+					&copy; 2013 Hanz Partners
+				</div>
+			</div>
+			{%- endblock footer %}
+		</footer>
+		{% endblock container %}
+	</div><!--/page-->
+	{% endblock page -%}
+	{% block js -%}
+	<!-- Javascript at the bottom for fast page loading -->
+	{%- block jquery -%}
+	<script type="text/javascript" language="javascript" src="{% static "abet_alumni_survey/js/libs/jquery-1.9.1.min.js" %}"></script>
+	{% endblock jquery -%}
+
+	{% block scripts -%}
+	<script type="text/javascript" language="javascript" src="{% static 'abet_alumni_survey/js/libs/hide-button.js' %}"></script>
+	<script type="text/javascript" language="javascript">
+	$(".hide-button").hideButton();
+	$.hideElements();
+	</script>
+	{% endblock scripts -%}
+
+
+	<!--[if lt IE 7 ]>
+	<script src="{% static 'abet_alumni_survey/js/libs/dd_belatedpng.js' %}"></script>
+	<script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+	<![endif]-->
+	{% block analytics -%}
+	{% include "abet_alumni_survey/macros/analytics.j2" %}
+	{% endblock analytics -%}
+
+	{% endblock js %}
+</body>
+</html>

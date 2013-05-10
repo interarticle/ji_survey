@@ -1,0 +1,1 @@
+%PYTHON% manage.py runserver

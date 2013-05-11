@@ -11,7 +11,7 @@ def index(request):
 	return render_to_response('ji_survey/index.j2')
 
 def survey_upload(request):
-	return HttpResponse()
+	return render_to_response('ji_survey/survey-done.j2')
 
 def abet_alumni(request):
 	data = {}

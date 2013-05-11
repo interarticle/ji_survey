@@ -17,19 +17,21 @@ body {
 }
 
 /* line 26, ../../../../sass/pages.scss */
-.region-wrap {
+#content .region-wrap {
   padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /*
  * The skip-link link will be completely hidden until a user tabs to the link.
  * See the element-focusable rule in system.base.css.
  */
-/* line 35, ../../../../sass/pages.scss */
+/* line 37, ../../../../sass/pages.scss */
 #skip-link {
   margin: 0;
 }
-/* line 39, ../../../../sass/pages.scss */
+/* line 41, ../../../../sass/pages.scss */
 #skip-link a,
 #skip-link a:visited {
   display: block;
@@ -43,16 +45,31 @@ body {
 /*
  * Header
  */
-/* line 53, ../../../../sass/pages.scss */
+/* line 55, ../../../../sass/pages.scss */
 #header {
+  background: white;
+  border-bottom: 1px dotted #ccc !important;
+}
+/* line 56, ../../../../sass/pages.scss */
+#header .region-wrap {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 1em;
   padding-bottom: 1em;
-  border-bottom: 1px dotted #ccc !important;
 }
 
-/* line 63, ../../../../sass/pages.scss */
+/* line 68, ../../../../sass/pages.scss */
+.survey #header {
+  border-bottom: none !important;
+}
+
+/* line 72, ../../../../sass/pages.scss */
+.survey #survey-sidebar {
+  background: white;
+  border-top: 1px dotted #ccc !important;
+}
+
+/* line 78, ../../../../sass/pages.scss */
 #logo {
   /* Wrapping link for logo */
   float: right;
@@ -60,51 +77,51 @@ body {
   margin: 0;
   padding: 0;
 }
-/* line 68, ../../../../sass/pages.scss */
+/* line 83, ../../../../sass/pages.scss */
 #logo img {
   vertical-align: bottom;
 }
 
-/* line 73, ../../../../sass/pages.scss */
+/* line 88, ../../../../sass/pages.scss */
 #name-and-slogan {
   /* Wrapper for website name and slogan */
   float: left;
   font-family: Georgia, "Times New Roman", "DejaVu Serif", serif;
   padding-top: 1px;
 }
-/* line 77, ../../../../sass/pages.scss */
+/* line 92, ../../../../sass/pages.scss */
 #name-and-slogan h1, #name-and-slogan h3 {
   color: #0c1481;
   border: none;
 }
 
-/* line 83, ../../../../sass/pages.scss */
+/* line 98, ../../../../sass/pages.scss */
 #site-name {
   /* The name of the website */
   margin: 0;
   font-size: 2.5em;
   line-height: 1.5em;
 }
-/* line 89, ../../../../sass/pages.scss */
+/* line 104, ../../../../sass/pages.scss */
 #site-name a:link,
 #site-name a:visited {
   color: #000;
   text-decoration: none;
 }
-/* line 95, ../../../../sass/pages.scss */
+/* line 110, ../../../../sass/pages.scss */
 #site-name a:hover,
 #site-name a:focus {
   text-decoration: underline;
 }
 
-/* line 100, ../../../../sass/pages.scss */
+/* line 115, ../../../../sass/pages.scss */
 #site-slogan {
   /* The slogan (or tagline) of a website */
   margin: 0;
   font-size: 1em;
 }
 
-/* line 105, ../../../../sass/pages.scss */
+/* line 120, ../../../../sass/pages.scss */
 .region-header {
   /* Wrapper for any blocks placed in the header region */
   clear: both;
@@ -114,7 +131,7 @@ body {
 /*
  * Main (container for everything else)
  */
-/* line 113, ../../../../sass/pages.scss */
+/* line 128, ../../../../sass/pages.scss */
 #main {
   background-color: white;
   -webkit-box-shadow: 0px 0px 5px 0px;
@@ -130,22 +147,22 @@ body {
 /*
  * Content
  */
-/* line 123, ../../../../sass/pages.scss */
+/* line 138, ../../../../sass/pages.scss */
 #content {
   padding-bottom: 1em;
   min-height: 600px;
 }
 
-/* line 131, ../../../../sass/pages.scss */
+/* line 146, ../../../../sass/pages.scss */
 .breadcrumb {
   /* The path to the current page in the form of a list of links */
 }
-/* line 132, ../../../../sass/pages.scss */
+/* line 147, ../../../../sass/pages.scss */
 .breadcrumb ol {
   margin: 0;
   padding: 0;
 }
-/* line 136, ../../../../sass/pages.scss */
+/* line 151, ../../../../sass/pages.scss */
 .breadcrumb li {
   display: inline;
   list-style-type: none;
@@ -153,7 +170,7 @@ body {
   padding: 0;
 }
 
-/* line 149, ../../../../sass/pages.scss */
+/* line 164, ../../../../sass/pages.scss */
 h1.title,
 h2.node-title,
 h2.block-title,
@@ -164,37 +181,37 @@ h3.title {
   margin: 0;
 }
 
-/* line 153, ../../../../sass/pages.scss */
+/* line 168, ../../../../sass/pages.scss */
 tr.even {
   /* Some tables have rows marked even or odd. */
   /* background-color: #eee; */
   /* Drupal core uses a #eee background */
 }
 
-/* line 157, ../../../../sass/pages.scss */
+/* line 172, ../../../../sass/pages.scss */
 tr.odd {
   /* background-color: #eee; */
   /* Drupal core uses a #eee background */
 }
 
-/* line 161, ../../../../sass/pages.scss */
+/* line 176, ../../../../sass/pages.scss */
 div.messages {
   /* Important messages (status, warning, and error) for the user. See also the declarations in messages.css. */
   margin: 1.5em 0;
   /* Drupal core uses "6px 0" margin */
 }
-/* line 164, ../../../../sass/pages.scss */
+/* line 179, ../../../../sass/pages.scss */
 div.messages ul {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-/* line 170, ../../../../sass/pages.scss */
+/* line 185, ../../../../sass/pages.scss */
 div.status {
   /* Normal priority messages */
 }
 
-/* line 174, ../../../../sass/pages.scss */
+/* line 189, ../../../../sass/pages.scss */
 div.warning,
 tr.warning {
   /* Medium priority messages */
@@ -202,53 +219,53 @@ tr.warning {
   /* Drupal core uses: 1px solid #f0c020 */
 }
 
-/* line 179, ../../../../sass/pages.scss */
+/* line 194, ../../../../sass/pages.scss */
 div.error,
 tr.error {
   /* High priority messages. See also the .error declaration below. */
 }
 
-/* line 182, ../../../../sass/pages.scss */
+/* line 197, ../../../../sass/pages.scss */
 .error {
   /* Errors that are separate from div.messages status messages. */
   /* color: #e55; */
   /* Drupal core uses a #e55 background */
 }
 
-/* line 186, ../../../../sass/pages.scss */
+/* line 201, ../../../../sass/pages.scss */
 .warning {
   /* Warnings that are separate from div.messages status messages. */
   /* color: #e09010; */
   /* Drupal core uses a #e09010 background */
 }
 
-/* line 190, ../../../../sass/pages.scss */
+/* line 205, ../../../../sass/pages.scss */
 .tabs {
   /* See also the tabs.css file. */
 }
 
-/* line 193, ../../../../sass/pages.scss */
+/* line 208, ../../../../sass/pages.scss */
 .region-help {
   /* Help text on a page */
 }
 
-/* line 196, ../../../../sass/pages.scss */
+/* line 211, ../../../../sass/pages.scss */
 .more-help-link {
   /* Link to more help */
 }
 
-/* line 199, ../../../../sass/pages.scss */
+/* line 214, ../../../../sass/pages.scss */
 .region-content {
   /* Wrapper for the actual page content */
 }
 
-/* line 202, ../../../../sass/pages.scss */
+/* line 217, ../../../../sass/pages.scss */
 ul.inline {
   /* List of links generated by theme_links() */
   display: inline;
   padding: 0;
 }
-/* line 206, ../../../../sass/pages.scss */
+/* line 221, ../../../../sass/pages.scss */
 ul.inline li {
   display: inline;
   list-style-type: none;
@@ -256,30 +273,30 @@ ul.inline li {
   /* LTR */
 }
 
-/* line 212, ../../../../sass/pages.scss */
+/* line 227, ../../../../sass/pages.scss */
 span.field-label {
   /* The inline field label used by the Fences module */
   padding: 0 1em 0 0;
   /* LTR */
 }
 
-/* line 216, ../../../../sass/pages.scss */
+/* line 231, ../../../../sass/pages.scss */
 .item-list .pager {
   /* A list of page numbers when more than 1 page of content is available */
   padding: 0;
 }
-/* line 219, ../../../../sass/pages.scss */
+/* line 234, ../../../../sass/pages.scss */
 .item-list .pager li {
   /* Each page number in the pager list */
   padding: 0 0.5em;
 }
 
-/* line 224, ../../../../sass/pages.scss */
+/* line 239, ../../../../sass/pages.scss */
 .feed-icon {
   /* The link to the RSS or Atom feed for the current list of content */
 }
 
-/* line 227, ../../../../sass/pages.scss */
+/* line 242, ../../../../sass/pages.scss */
 .more-link {
   /* Aggregator, blog, and forum more link */
 }
@@ -299,7 +316,7 @@ span.field-label {
 /*
  * Footer
  */
-/* line 254, ../../../../sass/pages.scss */
+/* line 269, ../../../../sass/pages.scss */
 #footer {
   margin-top: 0.5em;
   font-size: 0.8em;
@@ -309,7 +326,7 @@ span.field-label {
 /*
  * Page bottom
  */
-/* line 264, ../../../../sass/pages.scss */
+/* line 279, ../../../../sass/pages.scss */
 .region-bottom {
   /* Wrapper for any blocks placed in the page bottom region */
 }

@@ -42,43 +42,43 @@
 		{% endblock before_main %}
 		<div id="main" role="main">
 			<header id="header" class="banner clearfix">
-				<div id="logo">
-					<img src="{% static "ji_survey/images/logo.png" %}" alt="">
+				<div class="region-wrap">
+					<div id="logo">
+						<img src="{% static "ji_survey/images/logo.png" %}" alt="">
+					</div>
+					{% block header -%}
+					<div id="name-and-slogan">
+						<h1 id="site-name">
+							UM-SJTU Joint Institute Survey
+						</h1>
+						<h3 id="site-slogan">
+							
+						</h3>
+					</div>
+					{%- endblock %}
+					
+					{% block nav %}
+					{#% from "ji_survey/macros/menu.j2" import render_nav with context %}
+					<div id="navigation">
+						{{ render_nav(site.config.menu, None, 'main-menu') }}
+					</div>
+					#}
+					{% endblock %}
 				</div>
-				{% block header -%}
-				<div id="name-and-slogan">
-					<h1 id="site-name">
-						UM-SJTU Joint Institute Survey
-					</h1>
-					<h3 id="site-slogan">
-						
-					</h3>
-				</div>
-				{%- endblock %}
-
-				{% block nav %}
-				{#% from "ji_survey/macros/menu.j2" import render_nav with context %}
-				<div id="navigation">
-					{{ render_nav(site.config.menu, None, 'main-menu') }}
-				</div>
-				#}
-				{% endblock %}
 			</header>
-			<div id="content-wrap-outer">
-				{% block before_content %}{% endblock %}
-				<section id="content" class="content">
-					{% block content_wrap %}
-						<div id="content-wrap" class="region-wrap">
-							{% block content %}
-							{% endblock content %}
-						</div>
-					{% endblock content_wrap %}
-				</section>
-				{% block sidebar_first %}
-				{% endblock sidebar_first %}
-				{% block sidebar_second %}
-				{% endblock sidebar_second %}
-			</div>
+			{% block before_content %}{% endblock %}
+			<section id="content" class="content content-main">
+				{% block content_wrap %}
+					<div id="content-wrap" class="region-wrap">
+						{% block content %}
+						{% endblock content %}
+					</div>
+				{% endblock content_wrap %}
+			</section>
+			{% block sidebar_first %}
+			{% endblock sidebar_first %}
+			{% block sidebar_second %}
+			{% endblock sidebar_second %}
 			{% block after_content %}{% endblock %}
 			{# IE7 Overflow Fix #}
 			<div style="clear: both"></div>

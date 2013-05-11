@@ -371,6 +371,7 @@
 			$(sectionButtons[currentSectionIndex]).addClass('active');
 			progressBar.progressbar('value', (currentSectionIndex + 1) / (sections.size()) * 100);
 			progressLabel.text('Section ' + (currentSectionIndex + 1).toString() + '/' + (sections.size()).toString());
+			window.scrollTo(null, 0);
 		}
 
 

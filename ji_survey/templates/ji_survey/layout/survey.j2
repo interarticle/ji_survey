@@ -14,7 +14,7 @@
 {% block title -%}
 {{ super() }} - {{ self.survey_name() }}
 {%- endblock %}
-{% block before_content %}
+{% block before_main %}
 <form action="{{ url('views.survey_upload') }}" method="post" data-validation="required" data-dependant-message="After you complete this question, you may be asked to fill out further information" name="survey" id="survey-form">
 <span data-omit="1">
 	{% csrf_token %}
@@ -43,32 +43,34 @@
 	</section>
 {% endblock content %}
 {% block sidebar_first %}
-<div id="survey-sidebar" class="region-sidebar-first">
-	<div id="survey-controls" data-omit="1">
-		<div class="section-controls">
-			<button class="btn-prev nav-btn" title="Previous Section">&lt;</button>
-			<button id="survey-check-button" class="btn-check nav-btn" title="Check">
-				<img src="{% static "ji_survey/images/check_32.png" %}" alt="Check" title="Check">
-			</button>
-			<button class="btn-next nav-btn" title="Next Section">&gt;</button>
+<div id="survey-sidebar" class="region-sidebar-first content-main">
+	<div class="region-wrap">
+		<div id="survey-controls" data-omit="1">
+			<div class="section-controls">
+				<button class="btn-prev nav-btn" title="Previous Section">&lt;</button>
+				<button id="survey-check-button" class="btn-check nav-btn" title="Check">
+					<img src="{% static "ji_survey/images/check_32.png" %}" alt="Check" title="Check">
+				</button>
+				<button class="btn-next nav-btn" title="Next Section">&gt;</button>
+			</div>
+			<div class="submit">
+				<input id="survey-submit-button" type="submit" value="Submit" title="Submit" class="form-submit submit-btn">
+			</div>
 		</div>
-		<div class="submit">
-			<input id="survey-submit-button" type="submit" value="Submit" title="Submit" class="form-submit submit-btn">
+		<div id="survey-sections-display">
+			<h3>Sections</h3>
+			<ul class="sections">
+				
+			</ul>
+			<div class="bottom"></div>
 		</div>
-	</div>
-	<div id="survey-sections-display">
-		<h3>Sections</h3>
-		<ul class="sections">
-			
-		</ul>
-		<div class="bottom"></div>
-	</div>
-	<div id="survey-progress-display">
-		<div class="progressbar"></div>
-		<div class="progress-label"></div>
+		<div id="survey-progress-display">
+			<div class="progressbar"></div>
+			<div class="progress-label"></div>
+		</div>
 	</div>
 </div>
 {% endblock %}
-{% block after_content %}
+{% block after_main %}
 </form>
-{% endblock after_content %}
+{% endblock %}

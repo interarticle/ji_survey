@@ -15,7 +15,7 @@
 // We are going to create a 980px wide, 5 column grid with 20px gutters between
 // columns (applied as 10px of left/right padding on each column).
 $zen-column-count:  5;
-$zen-gutter-width:  20px;
+$zen-gutter-width:  0px;
 $zen-grid-width:    980px;
 
 
@@ -72,6 +72,14 @@ $zen-auto-include-item-base: false;
   @include zen-grid-container();
 }
 
+.region-wrap {
+  @include zen-grid-container();
+  padding: {
+    left: 10px;
+    right: 10px;
+  }
+}
+
 /*
  * Navigation bar
  */
@@ -91,9 +99,20 @@ $zen-auto-include-item-base: false;
  * The layout when there is only one sidebar, the left one.
  */
 
-#content-wrap-outer {
-  position: relative;
-  @include zen-grid-container();
+#header {
+  height: 6.5em;
+  width: $zen-grid-width;
+  position: absolute;
+  z-index: 3;
+}
+
+.content-main {
+  margin-top: 6.5em;
+}
+
+.survey #survey-sidebar {
+  position: absolute;
+  z-index: 4;
 }
 
 .sidebar-first {
@@ -103,6 +122,13 @@ $zen-auto-include-item-base: false;
 
   .region-sidebar-first { /* Span 1 column, starting in 1st column from left. */
     @include zen-grid-item(1, 1);
+  }
+}
+
+@media all and (min-height: 600px) {
+  #header,
+  .survey #survey-sidebar {
+    position: fixed;
   }
 }
 

@@ -23,8 +23,10 @@ body {
 #page {
 }
 
-.region-wrap {
+#content .region-wrap {
   padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /*
@@ -51,13 +53,26 @@ body {
  */
 
 #header {
-  padding: {
-    left: 15px;
-    right: 15px;
-    top: 1em;
-    bottom: 1em;
+  .region-wrap {
+    padding: {
+      left: 15px;
+      right: 15px;
+      top: 1em;
+      bottom: 1em;
+    }
   }
+  background: white;
   border-bottom: 1px dotted #ccc !important;
+}
+
+.survey #header {
+  border-bottom: none !important;
+}
+
+.survey #survey-sidebar {
+
+  background: white;
+  border-top: 1px dotted #ccc !important;
 }
 
 #logo { /* Wrapping link for logo */

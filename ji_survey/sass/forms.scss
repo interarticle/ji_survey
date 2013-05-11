@@ -138,8 +138,11 @@
 #survey-sidebar {
   padding-top: 1em;
 }
-#content {
-  @include box-shadow(inset 5px 5px 5px -7px #1c294b);
+.survey #content {
+  @include box-shadow(inset 5px 0px 5px -5px #1c294b);
+}
+.survey #header {
+  @include box-shadow(0px 5px 5px -5px  #1c294b);
 }
 #survey-controls {
   .section-controls {
@@ -193,6 +196,8 @@
     @include border-radius(5px 5px 0 0);
   }
   ul.sections {
+    max-height: 200px;
+    overflow: auto;
     margin: 0;
     padding: 0;
     li {

@@ -3,64 +3,156 @@
  * Form Styling
  */
 /* line 9, ../../../../sass/forms.scss */
+.error-message {
+  border: 1px dashed #e00;
+  background-color: #fee;
+  padding: 5px;
+}
+
+/* line 15, ../../../../sass/forms.scss */
 .form-item {
   /* Wrapper for a form element (or group of form elements) and its label */
   margin: 1.5em 0;
 }
-/* line 14, ../../../../sass/forms.scss */
+/* line 20, ../../../../sass/forms.scss */
 .form-item input.error,
 .form-item textarea.error,
 .form-item select.error {
   /* Highlight the form elements that caused a form submission error */
   border: 1px solid #c00;
 }
-/* line 18, ../../../../sass/forms.scss */
+/* line 24, ../../../../sass/forms.scss */
 .form-item label {
   /* The label for a form element */
   display: block;
   font-weight: bold;
 }
-/* line 23, ../../../../sass/forms.scss */
+/* line 29, ../../../../sass/forms.scss */
 .form-item label.option {
   /* The label for a radio button or checkbox */
   display: inline;
   font-weight: normal;
 }
-/* line 28, ../../../../sass/forms.scss */
+/* line 34, ../../../../sass/forms.scss */
 .form-item .form-required {
   /* The part of the label that indicates a required field */
   color: #c00;
 }
-/* line 32, ../../../../sass/forms.scss */
+/* line 38, ../../../../sass/forms.scss */
 .form-item .description {
   /* The descriptive help text (separate from the label) */
   font-size: 0.85em;
 }
-/* line 37, ../../../../sass/forms.scss */
+/* line 43, ../../../../sass/forms.scss */
 .form-checkboxes .form-item, .form-radios .form-item {
   /* Pack groups of checkboxes and radio buttons closer together */
   margin: 0;
   /* Drupal core uses "0.4em 0" */
 }
 
-/* line 42, ../../../../sass/forms.scss */
+/* line 49, ../../../../sass/forms.scss */
+.survey-question-list li.survey-question {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  margin-bottom: 0.5em;
+}
+/* line 53, ../../../../sass/forms.scss */
+.survey-question-list li.survey-question .question {
+  margin-bottom: 0.8em;
+  padding: 1px;
+  padding-left: 5px;
+}
+/* line 58, ../../../../sass/forms.scss */
+.survey-question-list li.survey-question .answer {
+  font-size: 0.8333em;
+}
+/* line 61, ../../../../sass/forms.scss */
+.survey-question-list li.survey-question .notes {
+  font-size: 0.8333em;
+}
+/* line 65, ../../../../sass/forms.scss */
+.survey-question-list .notes {
+  color: #555;
+}
+/* line 69, ../../../../sass/forms.scss */
+.survey-question-list ul.answer li {
+  list-style: none;
+}
+/* line 74, ../../../../sass/forms.scss */
+.survey-question-list .answer input[type="radio"] {
+  vertical-align: -0.1em;
+  margin-right: 0.5em;
+}
+/* line 78, ../../../../sass/forms.scss */
+.survey-question-list .answer input[type="text"] {
+  border: 1px transparent solid;
+  padding: 2px;
+}
+/* line 82, ../../../../sass/forms.scss */
+.survey-question-list .answer input[type="text"]:focus {
+  border: 1px #ccc dashed;
+}
+/* line 85, ../../../../sass/forms.scss */
+.survey-question-list .answer input[type="text"] {
+  border-bottom: 1px #555 solid !important;
+}
+/* line 89, ../../../../sass/forms.scss */
+.survey-question-list .answer ol.single-choice-list li.survey-question {
+  list-style: upper-alpha;
+}
+/* line 95, ../../../../sass/forms.scss */
+.survey-question-list .survey-sub-question-list li.survey-question {
+  list-style: lower-roman;
+}
+/* line 100, ../../../../sass/forms.scss */
+.survey-question-list .survey-question.error .question {
+  padding: 0px;
+  padding-left: 4px;
+  padding-right: 1em;
+  border: 1px dashed #c00;
+  background-color: #feffdd;
+  background: #feffdd url(../../images/error_16.png) no-repeat 99% center;
+}
+/* line 109, ../../../../sass/forms.scss */
+.survey-question-list .magnitude-radio-slider {
+  margin-right: 1.8em;
+  margin-left: 0.3em;
+}
+/* line 114, ../../../../sass/forms.scss */
+.survey-question-list .conditional {
+  -webkit-transition: all 1s ease;
+  -webkit-transition-delay: 0.1s;
+  -moz-transition: all 1s ease 0.1s;
+  -o-transition: all 1s ease 0.1s;
+  transition: all 1s ease 0.1s;
+  opacity: 1;
+}
+/* line 119, ../../../../sass/forms.scss */
+.survey-question-list .conditional.hidden {
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  height: 0px !important;
+}
+
+/* line 127, ../../../../sass/forms.scss */
 .form-submit {
   /* The submit button */
 }
 
-/* line 47, ../../../../sass/forms.scss */
+/* line 132, ../../../../sass/forms.scss */
 .container-inline div,
 .container-inline label {
   /* Inline labels and form divs */
   display: inline;
 }
 
-/* line 52, ../../../../sass/forms.scss */
+/* line 137, ../../../../sass/forms.scss */
 .tips {
   /* Tips for Drupal's input formats */
 }
 
-/* line 55, ../../../../sass/forms.scss */
+/* line 140, ../../../../sass/forms.scss */
 a.button {
   /* Buttons used by contrib modules like Media */
   -webkit-appearance: button;
@@ -71,7 +163,7 @@ a.button {
 /*
  * Password confirmation
  */
-/* line 64, ../../../../sass/forms.scss */
+/* line 149, ../../../../sass/forms.scss */
 .password-parent,
 .confirm-parent {
   margin: 0;
@@ -80,7 +172,7 @@ a.button {
 /*
  * Search (search-block-form.tpl.php)
  */
-/* line 72, ../../../../sass/forms.scss */
+/* line 157, ../../../../sass/forms.scss */
 #block-search-form {
   /* Wrapper for the search form */
 }
@@ -88,7 +180,7 @@ a.button {
 /*
  * Drupal's default login form block
  */
-/* line 79, ../../../../sass/forms.scss */
+/* line 164, ../../../../sass/forms.scss */
 #user-login-form {
   text-align: left;
   /* LTR */
@@ -99,13 +191,13 @@ a.button {
    * styling of list items.
    */
 }
-/* line 89, ../../../../sass/forms.scss */
+/* line 174, ../../../../sass/forms.scss */
 #user-login-form ul {
   /* OpenID creates a new ul above the login form's links. */
   margin-bottom: 0;
   /* Position OpenID's ul next to the rest of the links. */
 }
-/* line 94, ../../../../sass/forms.scss */
+/* line 179, ../../../../sass/forms.scss */
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* The "Log in using OpenID" link. */
@@ -114,13 +206,13 @@ html.js #user-login-form li.openid-link,
   /* LTR */
   /* Un-do some of the padding on the ul list. */
 }
-/* line 99, ../../../../sass/forms.scss */
+/* line 184, ../../../../sass/forms.scss */
 #user-login-form li.user-link {
   /* The "Cancel OpenID login" link. */
   margin-top: 1.5em;
 }
 
-/* line 104, ../../../../sass/forms.scss */
+/* line 189, ../../../../sass/forms.scss */
 #user-login ul {
   margin: 1.5em 0;
 }
@@ -131,7 +223,7 @@ html.js #user-login-form li.openid-link,
  * We overrode these styles in normalize.css, but restore them for the admin
  * section of the site.
  */
-/* line 116, ../../../../sass/forms.scss */
+/* line 201, ../../../../sass/forms.scss */
 form th {
   text-align: left;
   /* LTR */
@@ -139,15 +231,15 @@ form th {
   /* LTR */
   border-bottom: 3px solid #ccc;
 }
-/* line 122, ../../../../sass/forms.scss */
+/* line 207, ../../../../sass/forms.scss */
 form tbody {
   border-top: 1px solid #ccc;
 }
-/* line 126, ../../../../sass/forms.scss */
+/* line 211, ../../../../sass/forms.scss */
 form tr.even {
   background-color: #fff;
 }
-/* line 130, ../../../../sass/forms.scss */
+/* line 215, ../../../../sass/forms.scss */
 form table .item-list ul {
   margin: 0;
 }
@@ -155,7 +247,7 @@ form table .item-list ul {
 /*
  * Drupal core wrongly puts this in system.menus.css. Since we override that, add it back.
  */
-/* line 149, ../../../../sass/forms.scss */
+/* line 234, ../../../../sass/forms.scss */
 td.menu-disabled {
   background: #ccc;
 }

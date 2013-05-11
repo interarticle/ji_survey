@@ -1,0 +1,59 @@
+{% macro single_choice(question_name, answers) %}
+<ul class="answer">
+	{% for item in answers %}
+	{% set pref = chr(ord('A') + loop.index - 1) %}
+	<li>
+		<label>
+			<input type="radio" name="{{ question_name }}" value="{{ pref }}"> {{ pref }}. {{ item }}
+		</label>
+	</li>
+	{% endfor %}
+</ul>
+{% endmacro %}
+{% macro table_magnitude_radio_group(name, count, desc_table = {}) %}
+	{% for item in range(1, count + 1) %}
+	<td class="answer magnitude-radio-group {{ 'first' if loop.index == 1 }}" data-group-name="{{ name }}">
+		<label><input type="radio" name="{{ name }}" value="{{ item }}" title="{{ desc_table[item] if desc_table[item] else '' }}"></label>
+	</td>
+	{% endfor %}
+{% endmacro %}
+{% macro magnitude_radio_groups_table(name, questions, types, magnitude, corner = "", descs = []) %}
+	<table>
+		<thead>
+			<tr class="first">
+				<th class="first">{{ corner }}</th>
+				{% for item in types %}
+					{% if loop.index > 1 %}
+					<th class="seperator"></th>
+					{% endif %}
+					<th colspan="{{ magnitude }}" class="radio-group">{{ item }}</th>
+				{% endfor %}
+			</tr>
+			<tr>
+				<th></th>
+				{% for item in types %}
+					{% if loop.index > 1 %}
+					<th class="seperator"></th>
+					{% endif %}
+					{% for i in range(1, magnitude + 1) %}
+					<th>{{ i }}</th>
+					{% endfor %}
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in questions %}
+			<tr class="survey-question">
+				<td class="question first">{{ item }}</td>
+				{% set question_index = loop.index %}
+				{% for item in types %}
+					{% if loop.index > 1 %}
+					<td></td>
+					{% endif %}
+					{{ table_magnitude_radio_group(name ~ '.' ~ question_index ~ '.' ~ loop.index, magnitude, descs[loop.index0] if descs[loop.index0] else {}) }}
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endmacro %}

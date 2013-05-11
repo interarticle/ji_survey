@@ -6,6 +6,12 @@
 @import "base";
 
 
+.error-message {
+  border: 1px dashed #e00;
+  background-color: #fee;
+  padding: 5px;
+}
+
 .form-item { /* Wrapper for a form element (or group of form elements) and its label */
   margin: 1.5em 0;
 
@@ -36,6 +42,85 @@
   .form-checkboxes & ,
   .form-radios & { /* Pack groups of checkboxes and radio buttons closer together */
     margin: 0; /* Drupal core uses "0.4em 0" */
+  }
+}
+
+.survey-question-list {
+  li.survey-question {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    margin-bottom: 0.5em;
+    .question {
+      margin-bottom: 0.8em;
+      padding: 1px;
+      padding-left: 5px;
+    }
+    .answer {
+      font-size: 0.8333em;
+    }
+    .notes {
+      font-size: 0.8333em;
+    }
+  }
+  .notes {
+    color: #555;
+  }
+  ul.answer {
+    li {
+      list-style: none;
+    }
+  }
+  .answer {
+    input[type="radio"] {
+      vertical-align: -0.1em;
+      margin-right: 0.5em;
+    }
+    input[type="text"] {
+      border: 1px transparent solid;
+      padding: 2px;
+    }
+    input[type="text"]:focus {
+      border: 1px #ccc dashed;
+    }
+    input[type="text"] {
+      border-bottom: 1px #555 solid !important;
+    }
+    ol.single-choice-list {
+      li.survey-question {
+        list-style: upper-alpha;
+      }
+    }
+  }
+  .survey-sub-question-list {
+    li.survey-question {
+      list-style: lower-roman;
+    }
+  }
+  .survey-question.error {
+    .question {
+      padding: 0px;
+      padding-left: 4px;
+      padding-right: 1em;
+      border: 1px dashed #c00;
+      background-color: #feffdd;
+      background: #feffdd url(../../images/error_16.png) no-repeat 99% center;
+    }
+  }
+  .magnitude-radio-slider {
+    margin-right: 1.8em;
+    margin-left: 0.3em;
+  }
+
+  .conditional {
+    @include transition(all 1.0s ease 0.1s);
+    opacity: 1;
+  }
+
+  .conditional.hidden {
+     visibility: hidden;
+     overflow: hidden;
+     opacity: 0;
+     height: 0px !important;
   }
 }
 

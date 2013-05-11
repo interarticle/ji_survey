@@ -72,9 +72,10 @@ body {
 
 #name-and-slogan { /* Wrapper for website name and slogan */
   float: left;
-  font-family: $tahoma;
+  font-family: $georgia;
   padding-top: 1px;
   h1, h3 {
+    color: #0c1481;
     border: none;
   }
 }
@@ -111,7 +112,7 @@ body {
 
 #main {
   background-color: white;
-  @include box-shadow(0px 0px 5px -1px);
+  @include box-shadow(0px 0px 5px 0px);
   @include border-radius(0px 0px 5px 5px);
 }
 

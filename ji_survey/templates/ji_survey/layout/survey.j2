@@ -1,14 +1,47 @@
 {% extends "ji_survey/layout/base.j2" %}
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" href="{% static "ji_survey/css/jquery-ui/base/jquery-ui.min.css" %}">
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="{% static "ji_survey/js/libs/jquery-ui-1.10.3.custom.min.js" %}"></script>
+<script type="text/javascript" src="{% static "ji_survey/js/survey.js" %}"></script>
+{% endblock %}
 {% block body_classes -%}
-{{ super() }} sidebar-first
+{{ super() }} sidebar-first survey
 {%- endblock %}
 {% block title -%}
-{{ super() }} - {{ self.survey_name }}
+{{ super() }} - {{ self.survey_name() }}
 {%- endblock %}
 {% block content %}
-<h1>{% block survey_name %}Survey{% endblock %}</h1>
-{% block survey %}
-{% endblock %}
+	<h1>{% block survey_name %}Survey{% endblock %}</h1>
+	<noscript>
+		<div class="error-message">
+			<div>
+				<em>Error!</em>
+			</div>
+			<div>
+				Unfortunately, this survey cannot be done without JavaScript support on your browser. Please enable JavaScript and try again.
+			</div>
+		</div>
+		<style type="text/css">
+			#survey {
+				display: none !important;
+			}
+		</style>
+	</noscript>
+	<section id="survey">
+		<form action="{{ url('views.survey_upload') }}" method="post" data-validation="required" data-dependant-message="After you complete this question, you may be asked to fill out further information" name="survey" id="survey-form">
+			{% csrf_token %}
+			{% block survey %}
+			{% endblock %}
+			<div class="survey-controls" data-omit="1">
+				<input type="submit" value="Submit" class="form-submit">
+
+			</div>
+		</form>
+	</section>
 {% endblock content %}
 {% block sidebar_first %}
 <div class="region-sidebar-first">

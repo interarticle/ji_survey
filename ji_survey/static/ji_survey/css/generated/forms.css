@@ -51,60 +51,69 @@
 }
 
 /* line 49, ../../../../sass/forms.scss */
+#survey .section.hidden {
+  display: none;
+}
+
+/* line 55, ../../../../sass/forms.scss */
 .survey-question-list li.survey-question {
   font-size: 1.2em;
   line-height: 1.5em;
   margin-bottom: 0.5em;
 }
-/* line 53, ../../../../sass/forms.scss */
+/* line 59, ../../../../sass/forms.scss */
 .survey-question-list li.survey-question .question {
   margin-bottom: 0.8em;
   padding: 1px;
   padding-left: 5px;
 }
-/* line 58, ../../../../sass/forms.scss */
+/* line 64, ../../../../sass/forms.scss */
 .survey-question-list li.survey-question .answer {
   font-size: 0.8333em;
 }
-/* line 61, ../../../../sass/forms.scss */
+/* line 67, ../../../../sass/forms.scss */
 .survey-question-list li.survey-question .notes {
   font-size: 0.8333em;
 }
-/* line 65, ../../../../sass/forms.scss */
+/* line 71, ../../../../sass/forms.scss */
 .survey-question-list .notes {
   color: #555;
 }
-/* line 69, ../../../../sass/forms.scss */
+/* line 75, ../../../../sass/forms.scss */
 .survey-question-list ul.answer li {
   list-style: none;
 }
-/* line 74, ../../../../sass/forms.scss */
+/* line 80, ../../../../sass/forms.scss */
 .survey-question-list .answer input[type="radio"] {
   vertical-align: -0.1em;
   margin-right: 0.5em;
 }
-/* line 78, ../../../../sass/forms.scss */
+/* line 84, ../../../../sass/forms.scss */
 .survey-question-list .answer input[type="text"] {
   border: 1px transparent solid;
   padding: 2px;
 }
-/* line 82, ../../../../sass/forms.scss */
+/* line 88, ../../../../sass/forms.scss */
 .survey-question-list .answer input[type="text"]:focus {
   border: 1px #ccc dashed;
 }
-/* line 85, ../../../../sass/forms.scss */
+/* line 91, ../../../../sass/forms.scss */
 .survey-question-list .answer input[type="text"] {
   border-bottom: 1px #555 solid !important;
 }
-/* line 89, ../../../../sass/forms.scss */
-.survey-question-list .answer ol.single-choice-list li.survey-question {
+/* line 95, ../../../../sass/forms.scss */
+.survey-question-list .answer ol.single-choice-list li {
   list-style: upper-alpha;
 }
-/* line 95, ../../../../sass/forms.scss */
+/* line 101, ../../../../sass/forms.scss */
 .survey-question-list .survey-sub-question-list li.survey-question {
   list-style: lower-roman;
 }
-/* line 100, ../../../../sass/forms.scss */
+/* line 106, ../../../../sass/forms.scss */
+.survey-question-list .survey-question.dependant .question {
+  background: transparent url(../../images/info_16.png) no-repeat 99% center;
+}
+/* line 112, ../../../../sass/forms.scss */
 .survey-question-list .survey-question.error .question {
   padding: 0px;
   padding-left: 4px;
@@ -113,12 +122,12 @@
   background-color: #feffdd;
   background: #feffdd url(../../images/error_16.png) no-repeat 99% center;
 }
-/* line 109, ../../../../sass/forms.scss */
+/* line 121, ../../../../sass/forms.scss */
 .survey-question-list .magnitude-radio-slider {
   margin-right: 1.8em;
   margin-left: 0.3em;
 }
-/* line 114, ../../../../sass/forms.scss */
+/* line 126, ../../../../sass/forms.scss */
 .survey-question-list .conditional {
   -webkit-transition: all 1s ease;
   -webkit-transition-delay: 0.1s;
@@ -126,33 +135,183 @@
   -o-transition: all 1s ease 0.1s;
   transition: all 1s ease 0.1s;
   opacity: 1;
+  overflow: hidden;
 }
-/* line 119, ../../../../sass/forms.scss */
+/* line 132, ../../../../sass/forms.scss */
 .survey-question-list .conditional.hidden {
   visibility: hidden;
-  overflow: hidden;
   opacity: 0;
   height: 0px !important;
 }
 
-/* line 127, ../../../../sass/forms.scss */
+/* line 138, ../../../../sass/forms.scss */
+#survey-sidebar {
+  padding-top: 1em;
+}
+
+/* line 141, ../../../../sass/forms.scss */
+#content {
+  -webkit-box-shadow: inset 5px 5px 5px -7px #1c294b;
+  -moz-box-shadow: inset 5px 5px 5px -7px #1c294b;
+  box-shadow: inset 5px 5px 5px -7px #1c294b;
+}
+
+/* line 145, ../../../../sass/forms.scss */
+#survey-controls .section-controls {
+  overflow: hidden;
+}
+/* line 147, ../../../../sass/forms.scss */
+#survey-controls .section-controls .nav-btn {
+  float: left;
+  width: 33.333%;
+  height: 50px;
+  margin: 0;
+}
+/* line 154, ../../../../sass/forms.scss */
+#survey-controls .section-controls .btn-check {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+/* line 158, ../../../../sass/forms.scss */
+#survey-controls .section-controls .btn-prev {
+  background-image: url(../../images/left_32.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: transparent;
+  -webkit-border-radius: 5px 0 0 0;
+  -moz-border-radius: 5px 0 0 0;
+  -ms-border-radius: 5px 0 0 0;
+  -o-border-radius: 5px 0 0 0;
+  border-radius: 5px 0 0 0;
+}
+/* line 166, ../../../../sass/forms.scss */
+#survey-controls .section-controls .btn-next {
+  float: right;
+  background-image: url(../../images/right_32.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: transparent;
+  -webkit-border-radius: 0 5px 0 0;
+  -moz-border-radius: 0 5px 0 0;
+  -ms-border-radius: 0 5px 0 0;
+  -o-border-radius: 0 5px 0 0;
+  border-radius: 0 5px 0 0;
+}
+/* line 175, ../../../../sass/forms.scss */
+#survey-controls .submit-btn {
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  margin: 0;
+  width: 100%;
+  height: 3em;
+  font-weight: bold;
+}
+
+/* line 184, ../../../../sass/forms.scss */
+#survey-sections-display {
+  margin-top: 1.5em;
+}
+/* line 186, ../../../../sass/forms.scss */
+#survey-sections-display h3 {
+  border: none;
+  background-color: #19398c;
+  color: white;
+  padding: 10px;
+  line-height: 1.5em;
+  margin: 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+/* line 195, ../../../../sass/forms.scss */
+#survey-sections-display ul.sections {
+  margin: 0;
+  padding: 0;
+}
+/* line 198, ../../../../sass/forms.scss */
+#survey-sections-display ul.sections li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 203, ../../../../sass/forms.scss */
+#survey-sections-display ul.sections button {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  padding-left: 1.5em;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+/* line 211, ../../../../sass/forms.scss */
+#survey-sections-display ul.sections button.passed, #survey-sections-display ul.sections button.error {
+  background-repeat: no-repeat;
+  background-position: 90% center;
+}
+/* line 215, ../../../../sass/forms.scss */
+#survey-sections-display ul.sections button.passed {
+  background-image: url(../../images/tick_16.png);
+}
+/* line 218, ../../../../sass/forms.scss */
+#survey-sections-display ul.sections button.error {
+  background-image: url(../../images/exclm_mark_16.png);
+}
+/* line 223, ../../../../sass/forms.scss */
+#survey-sections-display div.bottom {
+  background-color: #19398c;
+  width: 100%;
+  height: 20px;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+
+/* line 231, ../../../../sass/forms.scss */
+#survey-progress-display {
+  margin-top: 1em;
+}
+/* line 233, ../../../../sass/forms.scss */
+#survey-progress-display .progressbar {
+  height: 1em;
+}
+/* line 236, ../../../../sass/forms.scss */
+#survey-progress-display .progress-label {
+  text-align: center;
+  color: #555;
+  font-size: 0.8em;
+}
+
+/* line 243, ../../../../sass/forms.scss */
 .form-submit {
   /* The submit button */
 }
 
-/* line 132, ../../../../sass/forms.scss */
+/* line 248, ../../../../sass/forms.scss */
 .container-inline div,
 .container-inline label {
   /* Inline labels and form divs */
   display: inline;
 }
 
-/* line 137, ../../../../sass/forms.scss */
+/* line 253, ../../../../sass/forms.scss */
 .tips {
   /* Tips for Drupal's input formats */
 }
 
-/* line 140, ../../../../sass/forms.scss */
+/* line 256, ../../../../sass/forms.scss */
 a.button {
   /* Buttons used by contrib modules like Media */
   -webkit-appearance: button;
@@ -163,7 +322,7 @@ a.button {
 /*
  * Password confirmation
  */
-/* line 149, ../../../../sass/forms.scss */
+/* line 265, ../../../../sass/forms.scss */
 .password-parent,
 .confirm-parent {
   margin: 0;
@@ -172,7 +331,7 @@ a.button {
 /*
  * Search (search-block-form.tpl.php)
  */
-/* line 157, ../../../../sass/forms.scss */
+/* line 273, ../../../../sass/forms.scss */
 #block-search-form {
   /* Wrapper for the search form */
 }
@@ -180,7 +339,7 @@ a.button {
 /*
  * Drupal's default login form block
  */
-/* line 164, ../../../../sass/forms.scss */
+/* line 280, ../../../../sass/forms.scss */
 #user-login-form {
   text-align: left;
   /* LTR */
@@ -191,13 +350,13 @@ a.button {
    * styling of list items.
    */
 }
-/* line 174, ../../../../sass/forms.scss */
+/* line 290, ../../../../sass/forms.scss */
 #user-login-form ul {
   /* OpenID creates a new ul above the login form's links. */
   margin-bottom: 0;
   /* Position OpenID's ul next to the rest of the links. */
 }
-/* line 179, ../../../../sass/forms.scss */
+/* line 295, ../../../../sass/forms.scss */
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* The "Log in using OpenID" link. */
@@ -206,13 +365,13 @@ html.js #user-login-form li.openid-link,
   /* LTR */
   /* Un-do some of the padding on the ul list. */
 }
-/* line 184, ../../../../sass/forms.scss */
+/* line 300, ../../../../sass/forms.scss */
 #user-login-form li.user-link {
   /* The "Cancel OpenID login" link. */
   margin-top: 1.5em;
 }
 
-/* line 189, ../../../../sass/forms.scss */
+/* line 305, ../../../../sass/forms.scss */
 #user-login ul {
   margin: 1.5em 0;
 }
@@ -223,7 +382,7 @@ html.js #user-login-form li.openid-link,
  * We overrode these styles in normalize.css, but restore them for the admin
  * section of the site.
  */
-/* line 201, ../../../../sass/forms.scss */
+/* line 317, ../../../../sass/forms.scss */
 form th {
   text-align: left;
   /* LTR */
@@ -231,15 +390,15 @@ form th {
   /* LTR */
   border-bottom: 3px solid #ccc;
 }
-/* line 207, ../../../../sass/forms.scss */
+/* line 323, ../../../../sass/forms.scss */
 form tbody {
   border-top: 1px solid #ccc;
 }
-/* line 211, ../../../../sass/forms.scss */
+/* line 327, ../../../../sass/forms.scss */
 form tr.even {
   background-color: #fff;
 }
-/* line 215, ../../../../sass/forms.scss */
+/* line 331, ../../../../sass/forms.scss */
 form table .item-list ul {
   margin: 0;
 }
@@ -247,7 +406,7 @@ form table .item-list ul {
 /*
  * Drupal core wrongly puts this in system.menus.css. Since we override that, add it back.
  */
-/* line 234, ../../../../sass/forms.scss */
+/* line 350, ../../../../sass/forms.scss */
 td.menu-disabled {
   background: #ccc;
 }

@@ -567,15 +567,51 @@ input[type="submit"] {
   /* 1 */
   -webkit-appearance: button;
   /* 2 */
+  border: none;
+  background-color: #19398c;
+  color: white;
+  margin: 2px;
+  -webkit-border-radius: 0.4em;
+  -moz-border-radius: 0.4em;
+  -ms-border-radius: 0.4em;
+  -o-border-radius: 0.4em;
+  border-radius: 0.4em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+/* line 580, ../../../../sass/normalize.scss */
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  background-color: #7d85c4;
+}
+/* line 584, ../../../../sass/normalize.scss */
+button:active, button.active,
+input[type="button"]:active,
+input[type="button"].active,
+input[type="reset"]:active,
+input[type="reset"].active,
+input[type="submit"]:active,
+input[type="submit"].active {
+  background-color: #6b75bc;
 }
 
 /*
  * Re-set default cursor for disabled elements
  */
-/* line 576, ../../../../sass/normalize.scss */
+/* line 594, ../../../../sass/normalize.scss */
 button[disabled],
 input[disabled] {
   cursor: default;
+  background-color: #7e7e7e;
+}
+/* line 597, ../../../../sass/normalize.scss */
+button[disabled]:hover,
+input[disabled]:hover {
+  background-color: #7e7e7e;
 }
 
 /*
@@ -584,7 +620,7 @@ input[disabled] {
  * 3. Removes excess padding in IE7
       Known issue: excess padding remains in IE6
  */
-/* line 588, ../../../../sass/normalize.scss */
+/* line 610, ../../../../sass/normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   -webkit-box-sizing: border-box;
@@ -599,7 +635,7 @@ input[type="radio"] {
  * 1. Addresses appearance set to searchfield in S5, Chrome
  * 2. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
  */
-/* line 602, ../../../../sass/normalize.scss */
+/* line 624, ../../../../sass/normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -612,7 +648,7 @@ input[type="search"] {
 /*
  * Removes inner padding and search cancel button in S5, Chrome on OS X
  */
-/* line 612, ../../../../sass/normalize.scss */
+/* line 634, ../../../../sass/normalize.scss */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
@@ -622,7 +658,7 @@ input[type="search"]::-webkit-search-cancel-button {
  * Removes inner padding and border in FF3+
  * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
  */
-/* line 622, ../../../../sass/normalize.scss */
+/* line 644, ../../../../sass/normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
@@ -633,7 +669,7 @@ input::-moz-focus-inner {
  * 1. Removes default vertical scrollbar in IE6/7/8/9
  * 2. Improves readability and alignment in all browsers
  */
-/* line 632, ../../../../sass/normalize.scss */
+/* line 654, ../../../../sass/normalize.scss */
 textarea {
   overflow: auto;
   /* 1 */
@@ -647,7 +683,7 @@ textarea {
 /*
  * Remove most spacing between table cells
  */
-/* line 646, ../../../../sass/normalize.scss */
+/* line 668, ../../../../sass/normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -662,7 +698,7 @@ table {
  * Drupal provides table styling which is only useful for its admin section
  * forms, so we override this default CSS. (We set it back in forms.css.)
  */
-/* line 660, ../../../../sass/normalize.scss */
+/* line 682, ../../../../sass/normalize.scss */
 th {
   text-align: left;
   /* LTR */
@@ -670,7 +706,7 @@ th {
   border-bottom: none;
 }
 
-/* line 666, ../../../../sass/normalize.scss */
+/* line 688, ../../../../sass/normalize.scss */
 tbody {
   border-top: none;
 }

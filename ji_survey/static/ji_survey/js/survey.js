@@ -71,13 +71,12 @@
 		},
 		form: function() {
 			var elem = $(this);
-			if (elem.prop('tagName') != 'FORM')
-				elem = elem.closest('form');
 			var result = {};
 			result.each = function(callback) {
 				for (var i in this){
 					if (typeof(this[i]) == 'object')
-						callback(i, this[i])
+						if (callback(i, this[i]) === false)
+							return;
 				}
 			}
 			elem.find('input,textarea,select').filter('[name]').each(
@@ -105,6 +104,13 @@
 				return data;
 			var found = $(this).parents().filter(function() { return $(this).data(name) != null; }).first();
 			return found.data(name);
+		},
+		hierDataElement: function(name) {
+			var data = $(this).data(name);
+			if (data != null)
+				return $(this);
+			var found = $(this).parents().filter(function() { return $(this).data(name) != null; }).first();
+			return found;
 		}
 	})
 })(jQuery);
@@ -163,10 +169,18 @@
  */
 (function($, undefined) {
 	var conditionParser = /\{([^\}]+)\}/g;
+	$.fn.extend({
+		dependancyUpdate: function() {
+			if ($(this).hasClass('dependant'))
+				$(this).find('.question').attr('title', $(this).hierData('dependant-message'));
+			else
+				$(this).find('.question').removeAttr('title');
+		}
+	});
 	$(function() {
-		var form = $("#survey-form").form();
+		var form = $("#survey").form();
 		var gdependancies = [];
-		$("#survey-form [data-condition]").each(function() {
+		$("#survey [data-condition]").each(function() {
 			var elem = $(this);
 			elem.css('height', elem.innerHeight());
 			elem.addClass('hidden');
@@ -200,7 +214,237 @@
 			depChange();
 		});
 		for (var i = 0; i < gdependancies.length; i++) {
-			form[gdependancies[i]].first().closest('.survey-question').addClass('dependant');
+			(function(elem) {
+				var sq = elem.first().closest('.survey-question');
+				sq.addClass('dependant').dependancyUpdate();
+				function elemChange() {
+					if (elem.formVal()) {
+						sq.removeClass('dependant');
+					} else {
+						sq.addClass('dependant');
+					}
+					sq.dependancyUpdate();
+				}
+				elem.change(elemChange);
+				elemChange();
+			})(form[gdependancies[i]]);
 		}
+	});
+})(jQuery);
+
+/**
+ * Validation
+ */
+(function($, undefined){
+	function required(number) {
+		if (number == null)
+			number = -1;
+		return function(elem) {
+			elem.closest('.survey-question').data('error-message', 'This question is required.');
+			if (number == -1) {
+				return Boolean($.trim(elem.formVal()));
+			} else {
+				var validCount = 0;
+				var rootElem = elem.hierDataElement('validation');
+				rootElem.form().each(function(name, control) {
+					if (Boolean($.trim(control.formVal()))) {
+						validCount ++;
+					}
+					if (validCount >= number) 
+						return false;
+				});
+				return (validCount >= number);
+			}
+		}
+	}
+	var form = $("#survey").form();
+	$(function() {
+		form.each(function(name, control) {
+			if (control.hierData('omit') == '1')
+				return;
+			var validation = control.hierData('validation');
+			validation = $.trim(validation);
+			if (!validation)
+				return;
+			var validations = validation.split(';');
+			var valFuncs = [];
+			for (var i = 0; i < validations.length; i++) {
+				validation = $.trim(validations[i]);
+				if (validation) {
+					if (!/\(/.test(validation))
+						validation += '()';
+				}
+				valFuncs.push(eval(validation));
+			}
+			control.data('validation_function', function(){
+				for (var i = 0; i < valFuncs.length; i++){
+					if (!valFuncs[i](control))
+						return false;
+				}
+				return true;
+			});
+			control.change(function() {
+				if ($(this).hasClass('failed')) {
+					$(this).closest('.survey-question').validateForm();
+				}
+			})
+		});
+	});
+	$.fn.extend({
+		validateForm: function(allSections) {
+			var form = $(this).form();
+			var result = true;
+			form.each(function(name, control) {
+				if (!control.validate(allSections))
+					result = false;
+			});
+			return result;
+		},
+		validationClear: function(force) {
+			var sq = $(this).closest('.survey-question');
+			if (sq.find('.failed').size() == 0 || force) {
+				sq.removeClass('error');
+				sq.find('.question').removeAttr('title');
+				sq.dependancyUpdate();
+			}
+		},
+		validate: function(allSections) {
+			var control = form[$(this).attr('name')];
+			if (control.closest('.hidden').filter(':not(.section)').size() > 0) {
+				control.removeClass('failed');
+				control.validationClear();
+				return true;
+			}
+			if (control.closest('.hidden').size() > 0 && !allSections)
+				return true;
+			if (control.data('validation_function')){
+				var sq = control.closest('.survey-question');
+				if (!control.data('validation_function')()){
+					control.addClass('failed');
+					sq.addClass('error');
+					sq.find('.question').attr('title', sq.hierData('error-message'));
+					return false;
+				} else {
+					control.removeClass('failed');
+					control.validationClear();
+				}
+			}
+			return true;
+		}
+	})
+})(jQuery);
+
+/**
+ * Sectioning and GUI
+ */
+(function($, undefined) {
+	$(function() {
+		var sections = $("#survey section.section");
+		var sectionButtons = [];
+		var i = 0;
+
+		sections.each(function() {
+			var elem = $(this);
+			var btn = $("<button>");
+			if (elem.find('.section-title').data('short-name')) {
+				btn.text(elem.find('.section-title').data('short-name'));
+			} else {
+				btn.text(elem.find('.section-title').text());
+			}
+			$("#survey-sections-display ul.sections").append($("<li>").append(btn));
+			btn.data('section-index', i);
+			sectionButtons.push(btn[0]);
+			i++;
+		});
+		sectionButtons = $(sectionButtons);
+
+		var progressBar = $("#survey-progress-display .progressbar").progressbar();
+		var progressLabel = $("#survey-progress-display .progress-label");
+
+		var currentSectionIndex = 0;
+		function updateSectionDisplay() {
+			if (currentSectionIndex <= 0) currentSectionIndex = 0;
+			if (currentSectionIndex >= sections.size()) currentSectionIndex = sections.size() - 1;
+			sections.addClass('hidden');
+			$(sections[currentSectionIndex]).removeClass('hidden');
+			sectionButtons.removeClass('active');
+			$(sectionButtons[currentSectionIndex]).addClass('active');
+			progressBar.progressbar('value', (currentSectionIndex + 1) / (sections.size()) * 100);
+			progressLabel.text('Section ' + (currentSectionIndex + 1).toString() + '/' + (sections.size()).toString());
+		}
+
+
+		function showSection(index, force) {
+			if (index <= 0) index = 0;
+			if (index >= sections.size()) index = sections.size() - 1;
+			if (!force) {
+				//Optimized for fast section switching
+				if (!checkSection(currentSectionIndex) && !$(sectionButtons[index]).hasClass('passed'))
+					return;
+			}
+			currentSectionIndex = index;
+			updateSectionDisplay();
+		}
+
+		function changeSection(count, force) {
+			showSection(currentSectionIndex + count, force);
+		}
+
+		updateSectionDisplay();
+
+		function checkAllSections() {
+			var result = true;
+			for (var i = 0; i < sections.size(); i++) {
+				if (!checkSection(i, true))
+					result = false;
+			}
+			return result;
+		}
+
+		function checkSection(sectionIndex, checkAll) {
+			var result = $(sections[sectionIndex]).validateForm(checkAll);
+			if (result) {
+				$(sectionButtons[sectionIndex]).addClass('passed');
+				$(sectionButtons[sectionIndex]).removeClass('error');
+			} else {
+				$(sectionButtons[sectionIndex]).removeClass('passed');
+				$(sectionButtons[sectionIndex]).addClass('error');
+			}
+			return result;
+		}
+
+		$("#survey-form").submit(function(e) {
+			if (!checkAllSections()) {
+				e.preventDefault();
+				e.stopPropagation();
+				return false;
+			}
+		})
+		var prevBtn = $("#survey-controls .section-controls .btn-prev");
+		var nextBtn = $("#survey-controls .section-controls .btn-next");
+		$("#survey-check-button").click(function() {
+			checkAllSections();
+		});
+		$("#survey-check-button").before(prevBtn).after(nextBtn);
+
+		prevBtn.click(function() {
+			changeSection(-1);
+		})
+
+		nextBtn.click(function() {
+			changeSection(1);
+		})
+
+		sectionButtons.click(function() {
+			showSection($(this).data('section-index'))
+		})
+
+		$("#survey-sidebar button").click(function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+		});
+
+		$("#survey").data('check_all_sections_function', checkAllSections);
+		$("#survey").data('check_section_function', checkSection);
 	});
 })(jQuery);

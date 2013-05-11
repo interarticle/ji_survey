@@ -566,6 +566,24 @@ input[type="submit"] {
   @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
     *overflow: visible;  /* 3 */
   }
+  border: none;
+  background-color: #19398c;
+  color: white;
+  margin: 2px;
+  @include border-radius(0.4em);
+  padding: {
+    left: 0.75em;
+    right: 0.75em;
+    top: 0.4em;
+    bottom: 0.4em;
+  }
+  &:hover{
+    background-color: #7d85c4;
+  }
+  &:active,
+  &.active {
+    background-color: darken(#7d85c4,5);
+  }
 }
 
 /*
@@ -575,6 +593,10 @@ input[type="submit"] {
 button[disabled],
 input[disabled] {
   cursor: default;
+  background-color: #7e7e7e;
+  &:hover {
+    background-color: #7e7e7e;
+  }
 }
 
 /*

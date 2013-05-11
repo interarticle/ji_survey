@@ -64,20 +64,22 @@
 				#}
 				{% endblock %}
 			</header>
-			<section id="content" class="content">
-				{% block content_wrap %}
-				<div id="content-wrap-outer">
-					<div id="content-wrap" class="region-wrap">
-						{% block content %}
-						{% endblock content %}
-					</div>
-				</div>
-				{% endblock content_wrap %}
-			</section>
-			{% block sidebar_first %}
-			{% endblock sidebar_first %}
-			{% block sidebar_second %}
-			{% endblock sidebar_second %}
+			<div id="content-wrap-outer">
+				{% block before_content %}{% endblock %}
+				<section id="content" class="content">
+					{% block content_wrap %}
+						<div id="content-wrap" class="region-wrap">
+							{% block content %}
+							{% endblock content %}
+						</div>
+					{% endblock content_wrap %}
+				</section>
+				{% block sidebar_first %}
+				{% endblock sidebar_first %}
+				{% block sidebar_second %}
+				{% endblock sidebar_second %}
+			</div>
+			{% block after_content %}{% endblock %}
 			{# IE7 Overflow Fix #}
 			<div style="clear: both"></div>
 		</div>
@@ -87,7 +89,7 @@
 			{% block footer -%}
 			<div id="footer-wrap">
 				Site designed by Zhao Yichen. Contact me at <a href="mailto:interarticle@gmail.com">interarticle@gmail.com</a>
-				<div id="copyright">Copyright &copy; Zhao Yichen, JINET, and respective survey designers.</div>
+				<div id="copyright">Copyright &copy; Zhao Yichen, and respective survey designers.</div>
 			</div>
 			{%- endblock footer %}
 		</footer>

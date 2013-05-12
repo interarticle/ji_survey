@@ -40,6 +40,8 @@ audio,
 canvas,
 video {
   display: inline-block;
+  *display: inline;
+  *zoom: 1;
 }
 
 /*
@@ -522,6 +524,9 @@ legend {
   padding: 0;
   white-space: normal;
   /* 2 */
+  *margin-left: -7px;
+  /* 3 */
+  /* LTR */
 }
 
 /*
@@ -539,6 +544,8 @@ textarea {
   margin: 0;
   /* 2 */
   vertical-align: baseline;
+  /* 3 */
+  *vertical-align: middle;
   /* 3 */
 }
 
@@ -567,6 +574,8 @@ input[type="submit"] {
   /* 1 */
   -webkit-appearance: button;
   /* 2 */
+  *overflow: visible;
+  /* 3 */
   border: none;
   background-color: #19398c;
   color: white;
@@ -629,6 +638,10 @@ input[type="radio"] {
   /* 1 */
   padding: 0;
   /* 2 */
+  *height: 13px;
+  /* 3 */
+  *width: 13px;
+  /* 3 */
 }
 
 /*

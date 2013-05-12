@@ -14,11 +14,13 @@
 {% block title -%}
 {{ super() }} - {{ self.survey_name() }}
 {%- endblock %}
-{% block before_main %}
+{% block page %}
 <form action="{{ url('views.survey_upload') }}" method="post" data-validation="required" data-dependant-message="After you complete this question, you may be asked to fill out further information" name="survey" id="survey-form">
 <span data-omit="1">
 	{% csrf_token %}
 </span>
+{{ super() }}
+</form>
 {% endblock %}
 {% block content %}
 	<h1>{% block survey_name %}Survey{% endblock %}</h1>
@@ -70,7 +72,4 @@
 		</div>
 	</div>
 </div>
-{% endblock %}
-{% block after_main %}
-</form>
 {% endblock %}

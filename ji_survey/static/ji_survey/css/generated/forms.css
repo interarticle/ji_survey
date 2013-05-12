@@ -177,6 +177,7 @@
 /* line 158, ../../../../sass/forms.scss */
 #survey-controls .section-controls {
   overflow: hidden;
+  *zoom: 1;
 }
 /* line 160, ../../../../sass/forms.scss */
 #survey-controls .section-controls .nav-btn {
@@ -425,6 +426,15 @@ form tr.even {
 /* line 349, ../../../../sass/forms.scss */
 form table .item-list ul {
   margin: 0;
+}
+
+/* line 358, ../../../../sass/forms.scss */
+.lt-ie8 tr.even th,
+.lt-ie8 tr.even td,
+.lt-ie8 tr.odd th,
+.lt-ie8 tr.odd td {
+  border-bottom: 1px solid #ccc;
+  /* IE doesn't display borders on table rows */
 }
 
 /*

@@ -12,12 +12,15 @@ ul.no-bullets li {
 
 /* line 20, ../../../../sass/navigation.scss */
 ul li.expanded {
+  *list-style-image: url(../images/menu-expanded.png);
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
   list-style-type: circle;
 }
 
 /* line 27, ../../../../sass/navigation.scss */
 ul li.collapsed {
+  *list-style-image: url(../images/menu-collapsed.png);
+  /* LTR */
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
   /* LTR */
   list-style-type: disc;
@@ -25,6 +28,7 @@ ul li.collapsed {
 
 /* line 34, ../../../../sass/navigation.scss */
 ul li.leaf {
+  *list-style-image: url(../images/menu-leaf.png);
   list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHBAMAAAA2fErgAAAAD1BMVEX///+/v7+Li4sAAADAwMBFvsw8AAAAAXRSTlMAQObYZgAAAB1JREFUCFtjYAADYwMGBmYVZSDhKAwkFJWhYiAAAB2+Aa/9ugeaAAAAAElFTkSuQmCC');
   list-style-type: square;
 }
@@ -56,6 +60,7 @@ li a.active {
   height: 1px;
   width: 1px;
   overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
 }
 /* line 67, ../../../../sass/navigation.scss */

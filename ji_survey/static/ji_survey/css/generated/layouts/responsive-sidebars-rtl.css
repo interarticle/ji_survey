@@ -47,6 +47,13 @@
 /*
  * Containers for grid items and flow items.
  */
+/* line 72, ../../../../../sass/layouts/responsive-sidebars.scss */
+#header,
+#main,
+#footer {
+  *position: relative;
+  *zoom: 1;
+}
 /* line 52, ../../../../../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header:before, #header:after,
 #main:before,

@@ -40,6 +40,13 @@
 /*
  * Containers for grid items and flow items.
  */
+/* line 71, ../../../../../sass/layouts/fixed-width.scss */
+#header,
+#main,
+#footer {
+  *position: relative;
+  *zoom: 1;
+}
 /* line 52, ../../../../../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header:before, #header:after,
 #main:before,
@@ -58,6 +65,8 @@
 
 /* line 75, ../../../../../sass/layouts/fixed-width.scss */
 .region-wrap {
+  *position: relative;
+  *zoom: 1;
   padding-left: 10px;
   padding-right: 10px;
 }

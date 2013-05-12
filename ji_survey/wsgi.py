@@ -31,7 +31,12 @@ if not projectPath in sys.path:
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
+_application = get_wsgi_application()
+
+def application(environ, start_response):
+	if 'ENVIRONMENT' in environ:
+		os.environ['ENVIRONMENT'] = environ['ENVIRONMENT']
+	return _application(environ, start_response)
 
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication

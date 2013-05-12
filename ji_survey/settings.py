@@ -1,3 +1,5 @@
+import os
+
 # Django settings for ji_survey project.
 
 DEBUG = True
@@ -8,6 +10,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
 
 DATABASES = {
     'default': {
@@ -20,6 +23,12 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
+
+
+if 'ENVIRONMENT' in os.environ:
+    if os.environ['ENVIRONMENT'] == 'production':
+        from .production import settings
+        DATABASES = settings.DATABASES
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts

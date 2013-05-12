@@ -47,8 +47,19 @@
 {% endblock content %}
 {% block sidebar_first %}
 <div id="survey-sidebar" class="region-sidebar-first content-main">
-	<div class="region-wrap">
-		<div id="survey-controls" data-omit="1">
+	<div class="region-wrap" data-omit="1">
+		<div id="survey-progress-display">
+			<div class="progressbar"></div>
+			<div class="progress-label"></div>
+		</div>
+		<div id="survey-sections-display" class="hidden">
+			<h3>Sections</h3>
+			<ul class="sections">
+				
+			</ul>
+			<div class="bottom"></div>
+		</div>
+		<div id="survey-controls">
 			<div class="section-controls">
 				<button class="btn-prev nav-btn" title="Previous Section">&lt;</button>
 				<button id="survey-check-button" class="btn-check nav-btn" title="Check">
@@ -59,17 +70,6 @@
 			<div class="submit">
 				<input id="survey-submit-button" type="submit" value="Submit" title="Submit" class="form-submit submit-btn">
 			</div>
-		</div>
-		<div id="survey-sections-display" class="hidden">
-			<h3>Sections</h3>
-			<ul class="sections">
-				
-			</ul>
-			<div class="bottom"></div>
-		</div>
-		<div id="survey-progress-display">
-			<div class="progressbar"></div>
-			<div class="progress-label"></div>
 		</div>
 	</div>
 </div>

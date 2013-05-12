@@ -172,21 +172,22 @@
 
 /* line 155, ../../../../sass/forms.scss */
 #survey-controls {
+  margin-top: 1.5em;
   overflow: hidden;
 }
-/* line 158, ../../../../sass/forms.scss */
+/* line 159, ../../../../sass/forms.scss */
 #survey-controls .section-controls {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 160, ../../../../sass/forms.scss */
+/* line 161, ../../../../sass/forms.scss */
 #survey-controls .section-controls .nav-btn {
   float: left;
   width: 33.333%;
   height: 50px;
   margin: 0;
 }
-/* line 167, ../../../../sass/forms.scss */
+/* line 168, ../../../../sass/forms.scss */
 #survey-controls .section-controls .btn-check {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -194,7 +195,7 @@
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 171, ../../../../sass/forms.scss */
+/* line 172, ../../../../sass/forms.scss */
 #survey-controls .section-controls .btn-prev {
   background-image: url(../../images/left_32.png);
   background-repeat: no-repeat;
@@ -206,7 +207,7 @@
   -o-border-radius: 5px 0 0 0;
   border-radius: 5px 0 0 0;
 }
-/* line 179, ../../../../sass/forms.scss */
+/* line 180, ../../../../sass/forms.scss */
 #survey-controls .section-controls .btn-next {
   float: right;
   background-image: url(../../images/right_32.png);
@@ -219,7 +220,7 @@
   -o-border-radius: 0 5px 0 0;
   border-radius: 0 5px 0 0;
 }
-/* line 188, ../../../../sass/forms.scss */
+/* line 189, ../../../../sass/forms.scss */
 #survey-controls .submit-btn {
   -webkit-border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
@@ -232,15 +233,15 @@
   font-weight: bold;
 }
 
-/* line 197, ../../../../sass/forms.scss */
-#survey-sections-display {
-  margin-top: 1.5em;
-}
 /* line 198, ../../../../sass/forms.scss */
+#survey-sections-display {
+  margin-top: 0.7em;
+}
+/* line 199, ../../../../sass/forms.scss */
 #survey-sections-display.hidden {
   display: none;
 }
-/* line 202, ../../../../sass/forms.scss */
+/* line 203, ../../../../sass/forms.scss */
 #survey-sections-display h3 {
   border: none;
   background-color: #19398c;
@@ -254,20 +255,20 @@
   -o-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
 }
-/* line 211, ../../../../sass/forms.scss */
+/* line 212, ../../../../sass/forms.scss */
 #survey-sections-display ul.sections {
   max-height: 200px;
   overflow: auto;
   margin: 0;
   padding: 0;
 }
-/* line 216, ../../../../sass/forms.scss */
+/* line 217, ../../../../sass/forms.scss */
 #survey-sections-display ul.sections li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 221, ../../../../sass/forms.scss */
+/* line 222, ../../../../sass/forms.scss */
 #survey-sections-display ul.sections button {
   width: 100%;
   margin: 0;
@@ -279,20 +280,20 @@
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 229, ../../../../sass/forms.scss */
+/* line 230, ../../../../sass/forms.scss */
 #survey-sections-display ul.sections button.passed, #survey-sections-display ul.sections button.error {
   background-repeat: no-repeat;
   background-position: 90% center;
 }
-/* line 233, ../../../../sass/forms.scss */
+/* line 234, ../../../../sass/forms.scss */
 #survey-sections-display ul.sections button.passed {
   background-image: url(../../images/tick_16.png);
 }
-/* line 236, ../../../../sass/forms.scss */
+/* line 237, ../../../../sass/forms.scss */
 #survey-sections-display ul.sections button.error {
   background-image: url(../../images/exclm_mark_16.png);
 }
-/* line 241, ../../../../sass/forms.scss */
+/* line 242, ../../../../sass/forms.scss */
 #survey-sections-display div.bottom {
   background-color: #19398c;
   width: 100%;
@@ -304,10 +305,6 @@
   border-radius: 0 0 5px 5px;
 }
 
-/* line 249, ../../../../sass/forms.scss */
-#survey-progress-display {
-  margin-top: 1em;
-}
 /* line 251, ../../../../sass/forms.scss */
 #survey-progress-display .progressbar {
   height: 1em;

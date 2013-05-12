@@ -417,6 +417,7 @@
 
 		$("#survey-form").submit(function(e) {
 			if (!checkAllSections()) {
+				alert("You haven't finished the entire survey. Please check sections with exclamation marks.");
 				e.preventDefault();
 				e.stopPropagation();
 				return false;

@@ -144,7 +144,17 @@
 .survey #header {
   @include box-shadow(0px 5px 5px -5px  #1c294b);
 }
+.ie6,
+.ie7 {
+  #survey-controls {
+    padding-right: 1px;
+    background-color: #19398c;
+  }
+}
+
 #survey-controls {
+  overflow: hidden;
+
   .section-controls {
     @include clearfix();
     .nav-btn {
@@ -185,6 +195,9 @@
 }
 
 #survey-sections-display {
+  &.hidden {
+    display: none;
+  }
   margin-top: 1.5em;
   h3 {
     border: none;

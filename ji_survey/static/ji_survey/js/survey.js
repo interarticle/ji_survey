@@ -180,7 +180,7 @@
 	$(function() {
 		var form = $("#survey").form();
 		var gdependancies = [];
-		$("#survey [data-condition]").each(function() {
+		$("#survey").find("[data-condition]").each(function() {
 			var elem = $(this);
 			elem.css('height', elem.innerHeight());
 			elem.addClass('hidden');
@@ -192,9 +192,9 @@
 			conditionParser.exec(); //Clear global
 			var match;
 			while ((match = conditionParser.exec(expr))) {
-				if (dependancies.indexOf(match[1]) == -1)
+				if ($.inArray(match[1], dependancies) == -1)
 					dependancies.push(match[1]);
-				if (gdependancies.indexOf(match[1]) == -1)
+				if ($.inArray(match[1], gdependancies) == -1)
 					gdependancies.push(match[1]);
 			}
 			conditionParser.exec();
@@ -339,7 +339,7 @@
  */
 (function($, undefined) {
 	$(function() {
-		var sections = $("#survey section.section");
+		var sections = $("#survey").find("section.section");
 		var sectionButtons = [];
 		var i = 0;
 
@@ -356,6 +356,7 @@
 			sectionButtons.push(btn[0]);
 			i++;
 		});
+		$("#survey-sections-display").removeClass('hidden');
 		sectionButtons = $(sectionButtons);
 
 		var progressBar = $("#survey-progress-display .progressbar").progressbar();

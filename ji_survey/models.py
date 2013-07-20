@@ -9,4 +9,11 @@ class SurveyResult(models.Model):
 	submitted       = models.BooleanField(default = True)
 
 	def __unicode__(self):
-		return "[%s] %s: %s" % (self.survey_key, self.ip, self.submission_date);
+		return "[%s] %s: %s" % (self.survey_key, self.ip, self.submission_date)
+
+class SurveyTranslation(models.Model):
+	survey_key      = models.CharField(max_length = 100)
+	translation     = models.TextField()
+
+	def __unicode__(self):
+		return self.survey_key

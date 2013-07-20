@@ -135,11 +135,11 @@
   -o-transition: all 1s ease 0.1s;
   transition: all 1s ease 0.1s;
   opacity: 1;
-  overflow: hidden;
 }
-/* line 132, ../../../../sass/forms.scss */
+/* line 131, ../../../../sass/forms.scss */
 .survey-question-list .conditional.hidden {
   visibility: hidden;
+  overflow: hidden;
   opacity: 0;
   height: 0px !important;
 }

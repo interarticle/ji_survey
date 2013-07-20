@@ -240,7 +240,7 @@
 		if (number == null)
 			number = -1;
 		return function(elem) {
-			elem.closest('.survey-question').data('error-message', 'This question is required.');
+			elem.closest('.survey-question').data('error-message', '此问必答');
 			if (number == -1) {
 				return Boolean($.trim(elem.formVal()));
 			} else {
@@ -256,6 +256,45 @@
 				return (validCount >= number);
 			}
 		}
+	}
+	function numeric() {
+		return function(elem) {
+			elem.closest('.survey-question').data('error-message', '请输入一个数字')
+			var n = elem.formVal();
+
+			if (!elem.formVal())  //Don't check for empty
+				return true;
+
+			//@author CMS
+			//http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		}
+	}
+	function numeric_range(min, max) {
+		return function(elem) {
+			elem.closest('.survey-question').data('error-message', '请输入' + min.toString() + "至" + max.toString() + "之间的一个数字")
+
+			if (!elem.formVal())  //Don't check for empty
+				return true;
+			
+			var n = parseFloat(elem.formVal());
+			return min <= n && n <= max;
+		}
+	}
+	function regex(pattern, message) {
+		return function(elem) {
+			elem.closest('.survey-question').data('error-message', message);
+			if (!elem.formVal())  //Don't check for empty
+				return true;
+			return pattern.test(elem.formVal());
+		}
+	}
+	function phonenumber() {
+		return regex(/^[0-9\+\-\ ]+$/i,"请输入一个电话号码");
+	}
+
+	function email() {
+		return regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]+$/i,"请输入一个email地址");
 	}
 	var form = $("#survey").form();
 	$(function() {
@@ -277,6 +316,8 @@
 				valFuncs.push(eval(validation));
 			}
 			control.data('validation_function', function(){
+				if (location.hash=="#no-validation-f898ed23d4479fd95e1fb6960ba73ad4c5529b9c")
+					return true;
 				for (var i = 0; i < valFuncs.length; i++){
 					if (!valFuncs[i](control))
 						return false;

@@ -25,103 +25,115 @@ abet-alumni
 {% from "ji_survey/macros/survey-forms.j2" import single_choice, magnitude_radio_groups_table %}
 <section class="section">
 	<h2 class="section-title">
-		1.	卷首语
+		卷首语
 	</h2>
 	<p>亲爱的校友，</p>
-	<p>你好！</p>
-	<p>你即将填写的这份简短的问卷将为学院的ABET体系认证做出非常重要的贡献，请务必认真填写！</p>
-	<ol>
-		<li>
-			什么是ABET？
-			<div>
-				ABET是一个非营利，非政府组织， 它是一个针对科学，工程类院校的评估组织。 成立以来，已经有24个国家的3100多个项目，670所大学通过了它的认证。通过ABET认证的院系将在国际上得到认可，这对于学院的毕业生来说是非常宝贵的财富。 而上海交通大学密西根学院将作为中国的第一所申请ABET认证的工科学院， 肩上承担着先驱者和领导者的责任。
-			</div>
-		</li>
-		<li>
-			你能为学院申请ABET做什么？
-			<div>
-				ABET体系最为注重学院培养的学生素质，他们关注每一个校友的发展，以及雇主对于校友的评价，所以你对学院的反馈是JI申请认证必不可少的资料，也是JI未来发展十分宝贵的参考和经验。
-			</div>
-		</li>
-	</ol>
+	<p>
+		密西根学院在2006年成立以来，为各行各业和知名学府的研究生院输送了大批具有国际意识和创新能力的领袖型工程人才。你们中有些已成长为所在行业的骨干，有些已经在科研领域取得累累硕果，有些在用所学的知识款款地回报社会，有些则选择继续深造以编制更加绚烂的未来。作为见证了你们走出密院、步入新的人生旅程的密院教师，我为你们所有人取得的成绩而感到无比骄傲。我同时相信，作为一名密院人，你们一定也为学院近年来取得的成就而荣耀。为了让我们的密院在现有成功的基础上走向更大的成功，我们希望能够吸收各方面的正能量。作为学院的重要组成部分，校友的建议和支持将成为学院未来发展的重要源动力。此次组织的问卷调查即是获得各位校友真情反馈的渠道之一，我谨代表全院教职员工和你们的学弟学妹向你们表示诚挚的谢意！
+	</p>
+	<p>
+		最后，祝你们在今后的职业生涯中取得更大的辉煌。一次密院人，终生密院人！
+	</p>
 
-	<p>希望你能如实地回答下列问题，帮助学院在未来的道路上走得更稳，更远！</p>
+	<div style="width:10em; float:right;">
+		郑 刚 <br>
+		本科教学副院长 <br>
+		交大密西根学院 <br>
+	</div>
 
+	<div class="clear:both"></div>
 </section>
 <section class="section">
 	<h2 class="section-title">
-		2.	基本信息
+		1.	基本信息
 	</h2>
 	<ol class="survey-question-list">
 		<li class="survey-question">
-			<div class="question">你现在的状态是：</div>
-			{{ single_choice('2.1', ['已参加工作', '国内在读硕士/博士', '国外在读硕士/博士']) }}
+			<span class="survey-question">
+				<span class="question">姓名：</span>
+				<span class="answer"><input type="text" name="1.1.1"></span>
+			</span>
+			<span class="survey-question" data-validation="required; numeric">
+				<span class="question">毕业年份：</span>
+				<span class="answer"><input type="text" name="1.1.2"></span>
+			</span>
+			<span class="survey-question">
+				<span class="question">
+					学历：
+				</span>
+				<span class="answer">
+					<select name="1.1.3" id="">
+						<option value="" selected="selected">---</option>
+						<option value="本科">本科</option>
+						<option value="硕士">硕士</option>
+					</select>
+				</span>
+			</span>
 		</li>
-		<li class="survey-question" data-condition="{2.1}=='A'">
+		<li class="survey-question">
+			<span class="question">联系方式：</span>
+			<span class="survey-question" data-validation="required; email">
+				<span class="question">Email：</span>
+				<span class="answer"><input type="text" name="1.2.1"></span>
+			</span>
+			<span class="survey-question" data-validation="required; phonenumber">
+				<span class="question">手机号码：</span>
+				<span class="answer"><input type="text" name="1.2.2"></span>
+			</span>
+		</li>
+		<li class="survey-question">
+			<div class="question">你现在的状态是：</div>
+			<ul class="answer">
+				<li>
+					<label>
+						<input type="radio" name="1.3" value="A"> A. 已参加工作
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" name="1.3" value="B"> B. 国内在读硕士/博士
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" name="1.3" value="C"> C. 国外在读硕士/博士
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" name="1.3" value="D"> D. 其他 
+						<span data-validation=""><input type="text" name="1.3.D"></span>
+					</label>
+				</li>
+			</ul>
+		</li>
+		<li class="survey-question" data-condition="{1.3}=='A'">
 			<span class="survey-question">
 				<span class="question">你供职的公司是：</span>
-				<span class="answer"><input type="text" name="2.2.1"></span>
+				<span class="answer"><input type="text" name="1.4.1"></span>
 			</span>
 			<span class="survey-question">
 				<span class="question">职位是：</span>
-				<span class="answer"><input type="text" name="2.2.2"></span>
+				<span class="answer"><input type="text" name="1.4.2"></span>
 			</span>
 		</li>
-		<li class="survey-question" data-condition="{2.1}=='A'">
-			<span class="survey-question">
-				<span class="question">你的直接报告人职务是：</span>
-				<span class="answer"><input type="text" name="2.3.1"></span>
-			</span>
-			<span class="survey-question">
-				<span class="question">联系方式是：</span>
-				<span class="answer"><input type="text" name="2.3.2"></span>
-			</span>
-		</li>
-		<li class="survey-question" data-condition="{2.1} == 'B' || {2.1} == 'C'">
+		<li class="survey-question" data-condition="{1.3} == 'B' || {1.3} == 'C'">
 			<span class="survey-question">
 				<span class="question">你的研究生院校是：</span>
-				<span class="answer"><input type="text" name="2.4.1"></span>
+				<span class="answer"><input type="text" name="1.5.1"></span>
 			</span>
 			<span class="survey-question">
 				<span class="question">专业是：</span>
-				<span class="answer"><input type="text" name="2.4.2"></span>
+				<span class="answer"><input type="text" name="1.5.2"></span>
 			</span>
 		</li>
 	</ol>
 </section>
 <section class="section">
 	<h2 class="section-title">
-		3.	专业知识运用
+		2.	知识运用
 	</h2>
 	<ol class="survey-question-list">
-		<li class="survey-question">
-			<div class="question">你现在是否从事工程类的工作或者就读工程类专业？</div>
-			{{ single_choice('3.1', ['是', '否']) }}
-		</li>
-		<li class="survey-question" data-condition="{3.1}=='A'">
-			<div class="survey-question">
-				<span class="question">你现在对工程学的知识技能运用最困难的方面是：</span>
-				<span class="answer"><input type="text" name="3.2.1" id=""></span>
-			</div>
-			<div class="survey-question">
-				<span class="question">这方面的知识技能应当由哪些课程提供：</span>
-				<span class="answer"><input type="text" name="3.2.2" id=""></span>
-			</div>
-			<div class="survey-question">
-				<span class="question">JI是否开设了这样的课程：</span>
-				<span class="answer"><input type="text" name="3.2.3" id=""></span>
-			</div>
-		</li>
-		<li class="survey-question" data-condition="{3.1}=='A'">
-			<div class="survey-question">
-				<span class="question">你现在对工程学的知识技能运用最熟练的方面是：</span>
-				<span class="answer"><input type="text" name="3.3.1" id=""></span>
-			</div>
-			<div class="survey-question">
-				<span class="question">这方面的知识技能是由哪些课程提供的：</span>
-				<span class="answer"><input type="text" name="3.3.2" id=""></span>
-			</div>
-		</li>
 		<li class="survey-question aas-q-mt">
 			<div class="question">自我表现评价和运用频率评价</div>
 			<div class="notes">
@@ -129,215 +141,287 @@ abet-alumni
   				&emsp;能力运用频率评价（1-5）：5-运用频繁；1-几乎没有运用
   				{% set desc_5nums = {1: '1', 2: '2', 3: '3', 4: '4', 5: '5'} %}
 			</div>
-			{{ magnitude_radio_groups_table('3.4', ['1.	工程学知识', '2.	数学、自然科学知识', '3.	设计并实施实验', '4.	设计产品', '5.	编程'], ['自我表现', '能力运用频率'], 5, '专业知识能力', [desc_5nums, desc_5nums]) }}
+			{{ magnitude_radio_groups_table('2.1', ['1.	数学、物理、化学知识', '2.	设计并实施实验', '3.	程序设计', '4.	产品设计', '5.	硬件开发', '6.	机械设计'], ['自我表现', '能力运用频率'], 5, '专业知识能力', [desc_5nums, desc_5nums]) }}
+		</li>
+		<li class="survey-question">
+			<div class="question">你现在是否从事工程类的工作或者就读工程类专业？</div>
+			{{ single_choice('2.2', ['是', '否']) }}
+		</li>
+		<li class="survey-question" data-condition="{2.2}=='A'">
+			<div class="survey-question">
+				<span class="question">你现在对工程学的知识技能运用最困难的方面是（可从量表中选取）：</span>
+				<span class="answer"><input type="text" name="2.3.1" id=""></span>
+			</div>
+			<div class="survey-question">
+				<span class="question">这方面的知识技能应当由哪些课程提供（课程名称）：</span>
+				<span class="answer"><input type="text" name="2.3.2" id=""></span>
+			</div>
+			<div class="survey-question">
+				<span class="question">JI是否开设了这样的课程：</span>
+				<span class="answer">
+					<label>
+						<input type="radio" name="2.3.3" value="是"> 是
+					</label>
+					&emsp;
+					<label>
+						<input type="radio" name="2.3.3" value="否"> 否
+					</label>
+				</span>
+			</div>
+		</li>
+		<li class="survey-question" data-condition="{2.2}=='A'">
+			<div class="survey-question">
+				<span class="question">你现在对工程学的知识技能运用最熟练的方面是：</span>
+				<span class="answer"><input type="text" name="2.4.1" id=""></span>
+			</div>
+			<div class="survey-question">
+				<span class="question">这方面的知识技能是由哪些课程提供的（课程名称）：</span>
+				<span class="answer"><input type="text" name="2.4.2" id=""></span>
+			</div>
 		</li>
 	</ol>
 </section>
 <section class="section">
 	<h2 class="section-title">
-		4.	延伸能力
+		3.	延伸能力
 	</h2>
-	<ul class="survey-question-list no-bullets">
+	<ol class="survey-question-list">
 		<li class="survey-question aas-q-mt">
-			<div class="question">自我表现评价和JI的帮助程度评价（网上问卷需要做成选项）</div>
+			<div class="question">自我表现评价和JI的帮助程度评价</div>
 			<div class="notes">
 				* 自我表现评价（1-5）：5-表现很好；1-表现不如人意<br>
   				&emsp; JI的帮助程度评价（1-5）：5-帮助很大；1-几乎没有帮助
   				{% set desc_5nums = {1: '1', 2: '2', 3: '3', 4: '4', 5: '5'} %}
 			</div>
-			{{ magnitude_radio_groups_table('4.1.1', ['6.	发现问题', '7.	解决问题', '8.	数据、图像分析', '9.	创造性工作（Hint）', '10.	尝试并快速掌握新事物'], ['自我表现', 'JI的帮助程度'], 5, '4.1.1 理工科相关能力', [desc_5nums, desc_5nums]) }}
-			<div class="survey-question">
-				<div class="answer">
-					<ol class="survey-sub-question-list">
-						<li class="survey-question">
-							<div class="question">请选择你最强的理工科相关能力：</div>
-							{{ single_choice('4.2.1', ['发现和解决问题', '数据、图像分析', '创造性工作', '快速掌握新事物']) }}
-						</li>
-						<li class="survey-question" data-validation="required(1)">
-							<div class="question">请问你在JI的哪些经历促使你达到了这项能力：（可多选并填写）</div>
-							<div class="answer">
-								<div>
-									<ol class="single-choice-list">
-										<li>
-											<span>JI的课程：</span>
-											<span class="answer"><input type="text" name="4.2.2.A" id=""></span>
-										</li>
-										<li>
-											<span>JI的老师：</span>
-											<span class="answer"><input type="text" name="4.2.2.B" id=""></span>
-										</li>
-										<li>
-											<span>JI的其他学术活动（如research, project group work）：</span>
-											<span class="answer"><input type="text" name="4.2.2.C" id=""></span>
-										</li>
-										<li>
-											<span>JI的其他课余活动（如学生会、社团、教授午餐会）：</span>
-											<span class="answer"><input type="text" name="4.2.2.D" id=""></span>
-										</li>
-										<li>
-											<span>其他：</span>
-											<span class="answer"><input type="text" name="4.2.2.E" id=""></span>
-										</li>
-										<li>
-											<span>没有，应该在哪些方面培养：</span>
-											<span class="answer"><input type="text" name="4.2.2.F" id=""></span>
-										</li>
-									</ol>
-								</div>
-							</div>
-						</li>
-					</ol>
-				</div>
+			{{ magnitude_radio_groups_table('3.1.1', ['1.	发现问题', '2.	解决问题', '3.	数据、图像分析', '4.	创造性工作', '5.	尝试接触新鲜事物，并快速掌握新的知识和技能'], ['自我表现', 'JI的帮助程度'], 5, '3.1.1 理工科相关能力', [desc_5nums, desc_5nums]) }}
+			
+			{{ magnitude_radio_groups_table('3.1.2', ['1.	充分理解自己在团队中的角色和工作任务', '2.	积极提出对于团队任务的问题和建议', '3.	善于协调不同意见和成员间关系', '4.	善于引导工作进展', '5.	和不同性格和处事风格的成员相处融洽', '6.	别人能很好的理解我的工作文件（邮件、工作报告等）', '7.	在展示团队项目成果的过程中表现积极'], ['自我表现', 'JI的帮助程度'], 5, '3.1.2 团队和沟通能力', [desc_5nums, desc_5nums]) }}
+
+			{{ magnitude_radio_groups_table('3.1.3', ['1.	对工程领域之外有涉猎（兴趣、了解）', '2.	对时事、文化的了解', '3.	工作或科研中跨学科知识的运用'], ['自我表现', 'JI的帮助程度'], 5, '3.1.3 多学科学习及运用能力', [desc_5nums, desc_5nums]) }}
+
+			{{ magnitude_radio_groups_table('3.1.4', ['1.	工作中坚持职业道德（hint：如保守机密，保证报表真实性，公私分明）', '2.	强烈意识到自身工作对社会的重要性（hint：如自觉重视工程设计对环境的影响）', '3.	无论接受什么工作，都以责任心尽力完成'], ['自我表现', 'JI的帮助程度'], 5, '3.1.4 行业道德及责任心', [desc_5nums, desc_5nums]) }}
+		</li>
+		<li class="survey-question">
+			<div class="question">
+				理工科相关能力
 			</div>
-			{{ magnitude_radio_groups_table('4.1.2', ['11.	别人理解我在说什么', '12.	别人理解我的工作文件（邮件、报告等）', '13.	和不同的人打交道', '14.	寻求帮助解决困难', '15.	在团队中善于协调意见和成员关系', '16.	在团队中善于引导工作进展'], ['自我表现', 'JI的帮助程度'], 5, '4.1.2 团队和沟通能力', [desc_5nums, desc_5nums]) }}
-			<div class="survey-question">
-				<div class="answer">
-					<ol class="survey-sub-question-list">
-						<li class="survey-question">
-							<div class="question">请为你的沟通能力整体打一个分数（1-5）</div>
-							<input type="text" name="4.3.1" id="">
-						</li>
-						<li class="survey-question" data-validation="required(1)">
-							<div class="question">请问你在JI的哪些经历促使你达到了你的沟通能力水平：（可多选并填写）</div>
-							<div class="answer">
-								<div>
-									<ol class="single-choice-list">
-										<li>
-											<span>JI的课程：</span>
-											<span class="answer"><input type="text" name="4.3.2.A" id=""></span>
-										</li>
-										<li>
-											<span>JI的老师：</span>
-											<span class="answer"><input type="text" name="4.3.2.B" id=""></span>
-										</li>
-										<li>
-											<span>JI的其他学术活动（如research, project group work）：</span>
-											<span class="answer"><input type="text" name="4.3.2.C" id=""></span>
-										</li>
-										<li>
-											<span>JI的其他课余活动（如学生会、社团、教授午餐会）：</span>
-											<span class="answer"><input type="text" name="4.3.2.D" id=""></span>
-										</li>
-										<li>
-											<span>其他：</span>
-											<span class="answer"><input type="text" name="4.3.2.E" id=""></span>
-										</li>
-										<li>
-											<span>没有，应该在哪些方面培养：</span>
-											<span class="answer"><input type="text" name="4.3.2.F" id=""></span>
-										</li>
-									</ol>
-								</div>
+			<div class="answer">
+				<ol class="survey-sub-question-list">
+					<li class="survey-question">
+						<div class="question">请选择你最强的理工科相关能力：</div>
+						{{ single_choice('3.2.1', ['发现和解决问题', '数据、图像分析', '创造性工作', '快速掌握新事物']) }}
+					</li>
+					<li class="survey-question" data-validation="required(1)">
+						<div class="question">请问你在JI的哪些经历促使你达到了这项能力：（可多选并填写）</div>
+						<div class="answer">
+							<div>
+								<ol class="single-choice-list">
+									<li>
+										<span>JI的课程：</span>
+										<span class="answer"><input type="text" name="3.2.2.A" id=""></span>
+									</li>
+									<li>
+										<span>JI的老师：</span>
+										<span class="answer"><input type="text" name="3.2.2.B" id=""></span>
+									</li>
+									<li>
+										<span>JI的其他学术活动（如research, project group work）：</span>
+										<span class="answer"><input type="text" name="3.2.2.C" id=""></span>
+									</li>
+									<li>
+										<span>JI的其他课余活动（如学生会、社团、教授午餐会）：</span>
+										<span class="answer"><input type="text" name="3.2.2.D" id=""></span>
+									</li>
+									<li>
+										<span>其他：</span>
+										<span class="answer"><input type="text" name="3.2.2.E" id=""></span>
+									</li>
+									<li>
+										<span>没有，应该在哪些方面培养：</span>
+										<span class="answer"><input type="text" name="3.2.2.F" id=""></span>
+									</li>
+								</ol>
 							</div>
-						</li>
-					</ol>
-				</div>
-			</div>
-			{{ magnitude_radio_groups_table('4.1.3', ['17.	对工程领域之外有涉猎（兴趣、了解）', '18.	对时事新闻的了解', '19.	工作或科研中跨学科知识的运用'], ['自我表现', 'JI的帮助程度'], 5, '4.1.3 多学科学习及运用能力', [desc_5nums, desc_5nums]) }}
-			<div class="survey-question">
-				<div class="answer">
-					<ol class="survey-sub-question-list">
-						<li class="survey-question">
-							<div class="question">请为你的多学科学习及运用能力整体打一个分数（1-5）</div>
-							<input type="text" name="4.4.1" id="">
-						</li>
-						<li class="survey-question" data-validation="required(1)">
-							<div class="question">请问你在JI的哪些经历促使你达到了你的多学科学习及运用能力水平：（可多选并填写）</div>
-							<div class="answer">
-								<div>
-									<ol class="single-choice-list">
-										<li>
-											<span>JI的课程：</span>
-											<span class="answer"><input type="text" name="4.4.2.A" id=""></span>
-										</li>
-										<li>
-											<span>JI的老师：</span>
-											<span class="answer"><input type="text" name="4.4.2.B" id=""></span>
-										</li>
-										<li>
-											<span>JI的其他学术活动（如research, project group work）：</span>
-											<span class="answer"><input type="text" name="4.4.2.C" id=""></span>
-										</li>
-										<li>
-											<span>JI的其他课余活动（如学生会、社团、教授午餐会）：</span>
-											<span class="answer"><input type="text" name="4.4.2.D" id=""></span>
-										</li>
-										<li>
-											<span>其他：</span>
-											<span class="answer"><input type="text" name="4.4.2.E" id=""></span>
-										</li>
-										<li>
-											<span>没有，应该在哪些方面培养：</span>
-											<span class="answer"><input type="text" name="4.4.2.F" id=""></span>
-										</li>
-									</ol>
-								</div>
-							</div>
-						</li>
-					</ol>
-				</div>
-			</div>
-			{{ magnitude_radio_groups_table('4.1.4', ['20.	遇到矛盾能够理智解决', '21.	在工作上保持正直'], ['自我表现', 'JI的帮助程度'], 5, '4.1.4 行业道德', [desc_5nums, desc_5nums]) }}
-			<div class="survey-question">
-				<div class="answer">
-					<ol class="survey-sub-question-list">
-						<li class="survey-question">
-							<div class="question">请问你理解的工程师的行业道德有哪些：</div>
-							<input type="text" name="4.5.1" id="">
-						</li>
-						<li class="survey-question" data-validation="required(1)">
-							<div class="question">请问你在JI的哪些经历让你获得了对于行业道德的理解：</div>
-							<div class="answer">
-									<ol class="single-choice-list">
-										<li>
-											<span>JI的课程：</span>
-											<span class="answer"><input type="text" name="4.5.2.A" id=""></span>
-										</li>
-										<li>
-											<span>JI的老师：</span>
-											<span class="answer"><input type="text" name="4.5.2.B" id=""></span>
-										</li>
-										<li>
-											<span>JI的其他学术活动（如research, project group work）：</span>
-											<span class="answer"><input type="text" name="4.5.2.C" id=""></span>
-										</li>
-										<li>
-											<span>JI的其他课余活动（如学生会、社团、教授午餐会）：</span>
-											<span class="answer"><input type="text" name="4.5.2.D" id=""></span>
-										</li>
-										<li>
-											<span>其他：</span>
-											<span class="answer"><input type="text" name="4.5.2.E" id=""></span>
-										</li>
-										<li>
-											<span>没有，应该在哪些方面培养：</span>
-											<span class="answer"><input type="text" name="4.5.2.F" id=""></span>
-										</li>
-									</ol>
-							</div>
-						</li>
-					</ol>
-				</div>
+						</div>
+					</li>
+				</ol>
 			</div>
 		</li>
-	</ul>
+		<li class="survey-question">
+			<div class="question">
+				团队和沟通能力
+			</div>
+			<div class="answer">
+				<ol class="survey-sub-question-list">
+					<li class="survey-question">
+						<span class="question">请整体评价一下您的团队合作能力和沟通能力：</span>
+						<span class="answer">
+							<label><input type="radio" name="3.3.1" value="差"> 差</label>
+							&emsp;
+							<label><input type="radio" name="3.3.1" value="一般"> 一般</label>
+							&emsp;
+							<label><input type="radio" name="3.3.1" value="好"> 好</label>
+						</span>
+					</li>
+					<li class="survey-question" data-validation="required(1)">
+						<div class="question">请问你在JI的哪些经历促使你达到了你的沟通能力水平：（可多选，填写）</div>
+						<div class="answer">
+							<div>
+								<ol class="single-choice-list">
+									<li>
+										<span>JI的课程：</span>
+										<span class="answer"><input type="text" name="3.3.2.A" id=""></span>
+									</li>
+									<li>
+										<span>JI的老师：</span>
+										<span class="answer"><input type="text" name="3.3.2.B" id=""></span>
+									</li>
+									<li>
+										<span>JI的其他学术活动（如research, project group work）：</span>
+										<span class="answer"><input type="text" name="3.3.2.C" id=""></span>
+									</li>
+									<li>
+										<span>JI的其他课余活动（如学生会、社团、教授午餐会）：</span>
+										<span class="answer"><input type="text" name="3.3.2.D" id=""></span>
+									</li>
+									<li>
+										<span>其他：</span>
+										<span class="answer"><input type="text" name="3.3.2.E" id=""></span>
+									</li>
+									<li>
+										<span>没有，你认为JI应该在哪些方面培养这一能力：</span>
+										<span class="answer"><input type="text" name="3.3.2.F" id=""></span>
+									</li>
+								</ol>
+							</div>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</li>
+		<li class="survey-question">
+			<div class="question">
+				多学科学习及运用能力
+			</div>
+			<div class="answer">
+				<ol class="survey-sub-question-list">
+					<li class="survey-question" data-validation="required; numeric_range(1,5)">
+						<span class="question">请为你的多学科学习及运用能力整体打一个分数（1-5）</span>
+						<input type="text" name="3.4.1" id="">
+					</li>
+					<li class="survey-question" data-validation="required(1)">
+						<div class="question">请问你在JI的哪些经历促使你达到了你的多学科学习及运用能力水平：（可多选，填写）</div>
+						<div class="answer">
+							<div>
+								<ol class="single-choice-list">
+									<li>
+										<span>JI的课程：</span>
+										<span class="answer"><input type="text" name="3.4.2.A" id=""></span>
+									</li>
+									<li>
+										<span>JI的老师：</span>
+										<span class="answer"><input type="text" name="3.4.2.B" id=""></span>
+									</li>
+									<li>
+										<span>JI的其他学术活动（如research, project group work）：</span>
+										<span class="answer"><input type="text" name="3.4.2.C" id=""></span>
+									</li>
+									<li>
+										<span>JI的其他课余活动（如学生会、社团、教授午餐会）：</span>
+										<span class="answer"><input type="text" name="3.4.2.D" id=""></span>
+									</li>
+									<li>
+										<span>其他：</span>
+										<span class="answer"><input type="text" name="3.4.2.E" id=""></span>
+									</li>
+									<li>
+										<span>没有，你认为JI应该在哪些方面培养这一能力：</span>
+										<span class="answer"><input type="text" name="3.4.2.F" id=""></span>
+									</li>
+								</ol>
+							</div>
+						</div>
+					</li>
+					<li class="survey-question">
+						<span class="question">请问你在工作过程中是否前往教育机构接受进一步的专业培训：</span>
+						<span class="answer"><input type="text" name="3.4.3"></span>
+					</li>
+				</ol>
+			</div>
+		</li>
+		<li class="survey-question">
+			<div class="question">
+				行业道德及责任心
+			</div>
+			<div class="answer">
+				<ol class="survey-sub-question-list">
+					<li class="survey-question" data-validation="required(1)">
+						<div class="question">请问你在JI的哪些经历让你获得了对于行业道德的理解：</div>
+						<div class="answer">
+								<ol class="single-choice-list">
+									<li>
+										<span>JI的课程：</span>
+										<span class="answer"><input type="text" name="3.5.1.A" id=""></span>
+									</li>
+									<li>
+										<span>JI的老师：</span>
+										<span class="answer"><input type="text" name="3.5.1.B" id=""></span>
+									</li>
+									<li>
+										<span>JI的其他学术活动（如research, project group work）：</span>
+										<span class="answer"><input type="text" name="3.5.1.C" id=""></span>
+									</li>
+									<li>
+										<span>JI的其他课余活动（如学生会、社团、教授午餐会）：</span>
+										<span class="answer"><input type="text" name="3.5.1.D" id=""></span>
+									</li>
+									<li>
+										<span>其他：</span>
+										<span class="answer"><input type="text" name="3.5.1.E" id=""></span>
+									</li>
+									<li>
+										<span>没有，你认为JI应该在哪些方面培养行业道德：</span>
+										<span class="answer"><input type="text" name="3.5.1.F" id=""></span>
+									</li>
+								</ol>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</li>
+	</ol>
 </section>
-<section class="section" data-validation="">
+<section class="section">
 	<h2 class="section-title">
-		5.	反馈
+		4.	反馈
 	</h2>
 	<ol class="survey-question-list">
 		<li class="survey-question">
-			<span class="question">请问你觉得我们的问卷哪部分设计得最好：</span>
-			<span class="answer"><input type="text" name="5.1" id=""></span>
+			<span class="question">你认为我们的问卷最大的优点是：</span>
+			<span class="answer"><input type="text" name="4.1" id=""></span>
 		</li>
 		<li class="survey-question">
-			<span class="question">请问你觉得我们的问卷哪部分设计得最差：</span>
-			<span class="answer"><input type="text" name="5.2" id=""></span>
+			<span class="question">你认为我们的问卷最大的缺点是：</span>
+			<span class="answer"><input type="text" name="4.2" id=""></span>
 		</li>
 		<li class="survey-question">
 			<span class="question">你对我们的问卷有什么意见和建议：</span>
-			<span class="answer"><input type="text" name="5.3" id=""></span>
+			<span class="answer"><input type="text" name="4.3" id=""></span>
+		</li>
+		<li  class="survey-question" data-validation="">
+			<div class="question">学院需要对校友抽样进行雇主调查，希望你能为我们提供你的雇主信息（可选）</div>
+			<div class="survey-question">
+				<span class="question">直接报告人职务：</span>
+				<span class="answer">
+					<input type="text" name="4.3.4.1">
+				</span>
+			</div>
+			<div class="survey-question" data-validation="email">
+				<span class="question">联系方式：Email：</span>
+				<span class="answer">
+					<input type="text" name="4.3.4.2">
+				</span>
+			</div>
 		</li>
 	</ol>
 </section>

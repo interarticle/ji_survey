@@ -126,11 +126,11 @@
   .conditional {
     @include transition(all 1.0s ease 0.1s);
     opacity: 1;
-    overflow: hidden;
   }
 
   .conditional.hidden {
      visibility: hidden;
+     overflow: hidden;
      opacity: 0;
      height: 0px !important;
   }

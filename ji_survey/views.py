@@ -36,4 +36,5 @@ def survey_upload(request):
 def abet_alumni(request):
 	data = {}
 	data.update(csrf(request))
+	data['is_2009'] = '2009' in request.GET;
 	return render_to_response('ji_survey/abet-alumni-survey.j2', data)

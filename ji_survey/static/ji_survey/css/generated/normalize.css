@@ -615,12 +615,12 @@ input[type="submit"].active {
 button[disabled],
 input[disabled] {
   cursor: default;
-  background-color: #7e7e7e;
+  background-color: #eee;
 }
 /* line 597, ../../../../sass/normalize.scss */
 button[disabled]:hover,
 input[disabled]:hover {
-  background-color: #7e7e7e;
+  background-color: #eee;
 }
 
 /*

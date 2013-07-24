@@ -29,7 +29,7 @@ abet-alumni
 	</h2>
 	<p>亲爱的校友，</p>
 	<p>
-		密西根学院在2006年成立以来，为各行各业和知名学府的研究生院输送了大批具有国际意识和创新能力的领袖型工程人才。你们中有些已成长为所在行业的骨干，有些已经在科研领域取得累累硕果，有些在用所学的知识款款地回报社会，有些则选择继续深造以编制更加绚烂的未来。作为见证了你们走出密院、步入新的人生旅程的密院教师，我为你们所有人取得的成绩而感到无比骄傲。我同时相信，作为一名密院人，你们一定也为学院近年来取得的成就而荣耀。为了让我们的密院在现有成功的基础上走向更大的成功，我们希望能够吸收各方面的正能量。作为学院的重要组成部分，校友的建议和支持将成为学院未来发展的重要源动力。此次组织的问卷调查即是获得各位校友真情反馈的渠道之一，我谨代表全院教职员工和你们的学弟学妹向你们表示诚挚的谢意！
+		密西根学院在2006年成立以来，为各行各业和知名学府的研究生院输送了大批具有国际意识和创新能力的领袖型工程人才。你们中有些已成长为所在行业的骨干，有些已经在科研领域取得累累硕果，有些在用所学的知识款款地回报社会，有些则选择继续深造以编织更加绚烂的未来。作为见证了你们走出密院、步入新的人生旅程的密院教师，我为你们所有人取得的成绩而感到无比骄傲。我同时相信，作为一名密院人，你们一定也为学院近年来取得的成就而荣耀。为了让我们的密院在现有成功的基础上走向更大的成功，我们希望能够吸收各方面的正能量。作为学院的重要组成部分，校友的建议和支持将成为学院未来发展的重要源动力。此次组织的问卷调查即是获得各位校友真情反馈的渠道之一，我谨代表全院教职员工和你们的学弟学妹向你们表示诚挚的谢意！
 	</p>
 	<p>
 		最后，祝你们在今后的职业生涯中取得更大的辉煌。一次密院人，终生密院人！
@@ -53,6 +53,7 @@ abet-alumni
 				<span class="question">姓名：</span>
 				<span class="answer"><input type="text" name="1.1.1"></span>
 			</span>
+			{% if not is_2009 %}
 			<span class="survey-question" data-validation="required; numeric">
 				<span class="question">毕业年份：</span>
 				<span class="answer"><input type="text" name="1.1.2"></span>
@@ -66,9 +67,54 @@ abet-alumni
 						<option value="" selected="selected">---</option>
 						<option value="本科">本科</option>
 						<option value="硕士">硕士</option>
+						<option value="博士">博士</option>
 					</select>
 				</span>
 			</span>
+			<input type="hidden" name="1.1.4" value="">
+			<input type="hidden" name="1.1.5" value="">
+			<input type="hidden" name="1.1.6" value="">
+			{% else %}
+			<span class="survey-question" data-validation="">
+				<span class="question">毕业年份：</span>
+				<span class="answer"><input type="text" disabled value="2013"></span>
+				<input type="hidden" name="1.1.2" value="2013">
+			</span>
+			<span class="survey-question" data-validation="">
+				<span class="question">
+					学历：
+				</span>
+				<span class="answer">
+					<select id="" disabled>
+						<option value="">---</option>
+						<option value="本科" selected>本科</option>
+						<option value="硕士">硕士</option>
+						<option value="博士">博士</option>
+					</select>
+					<input type="hidden" name="1.1.3" value="本科">
+				</span>
+			</span>
+			<div>
+				<span class="survey-question" data-validation="required; numeric">
+					<span class="question">学号：</span>
+					<span class="answer"><input type="text" name="1.1.4"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">班号：</span>
+					<span class="answer"><input type="text" name="1.1.5"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">性别：</span>
+					<span class="answer">
+						<select name="1.1.6" id="">
+							<option value="" selected="selected">---</option>
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+					</span>
+				</span>
+			</div>
+			{% endif %}
 		</li>
 		<li class="survey-question">
 			<span class="question">联系方式：</span>
@@ -108,24 +154,48 @@ abet-alumni
 			</ul>
 		</li>
 		<li class="survey-question" data-condition="{1.3}=='A'">
-			<span class="survey-question">
-				<span class="question">你供职的公司是：</span>
-				<span class="answer"><input type="text" name="1.4.1"></span>
-			</span>
-			<span class="survey-question">
-				<span class="question">职位是：</span>
-				<span class="answer"><input type="text" name="1.4.2"></span>
-			</span>
+			<div>
+				<span class="survey-question">
+					<span class="question">你供职的公司是：</span>
+					<span class="answer"><input type="text" name="1.4.1"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">职位是：</span>
+					<span class="answer"><input type="text" name="1.4.2"></span>
+				</span>
+			</div>
+			<div>
+				<span class="survey-question">
+					<span class="question">国家：</span>
+					<span class="answer"><input type="text" name="1.4.3"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">城市：</span>
+					<span class="answer"><input type="text" name="1.4.4"></span>
+				</span>
+			</div>
 		</li>
 		<li class="survey-question" data-condition="{1.3} == 'B' || {1.3} == 'C'">
-			<span class="survey-question">
-				<span class="question">你的研究生院校是：</span>
-				<span class="answer"><input type="text" name="1.5.1"></span>
-			</span>
-			<span class="survey-question">
-				<span class="question">专业是：</span>
-				<span class="answer"><input type="text" name="1.5.2"></span>
-			</span>
+			<div>
+				<span class="survey-question">
+					<span class="question">你的研究生院校是：</span>
+					<span class="answer"><input type="text" name="1.5.1"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">专业是：</span>
+					<span class="answer"><input type="text" name="1.5.2"></span>
+				</span>
+			</div>
+			<div>
+				<span class="survey-question">
+					<span class="question">国家：</span>
+					<span class="answer"><input type="text" name="1.5.3"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">城市：</span>
+					<span class="answer"><input type="text" name="1.5.4"></span>
+				</span>
+			</div>
 		</li>
 	</ol>
 </section>
@@ -149,7 +219,7 @@ abet-alumni
 		</li>
 		<li class="survey-question" data-condition="{2.2}=='A'">
 			<div class="survey-question">
-				<span class="question">你现在对工程学的知识技能运用最困难的方面是（可从量表中选取）：</span>
+				<span class="question">你现在对工程类的专业知识能力运用最困难的方面是：</span>
 				<span class="answer"><input type="text" name="2.3.1" id=""></span>
 			</div>
 			<div class="survey-question">
@@ -197,7 +267,7 @@ abet-alumni
 			
 			{{ magnitude_radio_groups_table('3.1.2', ['1.	充分理解自己在团队中的角色和工作任务', '2.	积极提出对于团队任务的问题和建议', '3.	善于协调不同意见和成员间关系', '4.	善于引导工作进展', '5.	和不同性格和处事风格的成员相处融洽', '6.	别人能很好的理解我的工作文件（邮件、工作报告等）', '7.	在展示团队项目成果的过程中表现积极'], ['自我表现', 'JI的帮助程度'], 5, '3.1.2 团队和沟通能力', [desc_5nums, desc_5nums]) }}
 
-			{{ magnitude_radio_groups_table('3.1.3', ['1.	对工程领域之外有涉猎（兴趣、了解）', '2.	对时事、文化的了解', '3.	工作或科研中跨学科知识的运用'], ['自我表现', 'JI的帮助程度'], 5, '3.1.3 多学科学习及运用能力', [desc_5nums, desc_5nums]) }}
+			{{ magnitude_radio_groups_table('3.1.3', ['1.	对工程领域之外有涉猎/兴趣/了解', '2.	对时事、文化的了解', '3.	工作或科研中跨学科知识的运用'], ['自我表现', 'JI的帮助程度'], 5, '3.1.3 多学科学习及运用能力', [desc_5nums, desc_5nums]) }}
 
 			{{ magnitude_radio_groups_table('3.1.4', ['1.	工作中坚持职业道德（hint：如保守机密，保证报表真实性，公私分明）', '2.	强烈意识到自身工作对社会的重要性（hint：如自觉重视工程设计对环境的影响）', '3.	无论接受什么工作，都以责任心尽力完成'], ['自我表现', 'JI的帮助程度'], 5, '3.1.4 行业道德及责任心', [desc_5nums, desc_5nums]) }}
 		</li>
@@ -413,15 +483,28 @@ abet-alumni
 			<div class="survey-question">
 				<span class="question">直接报告人职务：</span>
 				<span class="answer">
-					<input type="text" name="4.3.4.1">
+					<input type="text" name="4.4.1">
 				</span>
 			</div>
 			<div class="survey-question" data-validation="email">
 				<span class="question">联系方式：Email：</span>
 				<span class="answer">
-					<input type="text" name="4.3.4.2">
+					<input type="text" name="4.4.2">
 				</span>
 			</div>
+		</li>
+		<li class="survey-question">
+			<span class="question">你是否愿意成为所在片区的联络人？</span>
+			&emsp;
+			<span class="answer">
+				<label>
+					<input type="radio" name="4.5" value="是"> 是
+				</label>
+				&emsp;
+				<label>
+					<input type="radio" name="4.5" value="否"> 否
+				</label>
+			</span>
 		</li>
 	</ol>
 </section>

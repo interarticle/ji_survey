@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-24 14:01+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\static\ji_survey\js\survey.js.c:243
+msgid "This question is required"
+msgstr "此问必答"
+
+#: .\static\ji_survey\js\survey.js.c:262
+msgid "Please enter a number"
+msgstr "请输入一个数字"
+
+#: .\static\ji_survey\js\survey.js.c:275
+msgid "Please enter a number between %(min)s and %(max)s"
+msgstr "请输入介于%(min)s和%(max)s之间的一个数字"
+
+#: .\static\ji_survey\js\survey.js.c:293
+msgid "Please enter a valid telephone number"
+msgstr "请输入一个电话号码"
+
+#: .\static\ji_survey\js\survey.js.c:297
+msgid "Please enter a valid email address"
+msgstr "请输入一个邮件地址"
+
+#: .\static\ji_survey\js\survey.js.c:415
+msgid "Section %(current)s/%(total)s"
+msgstr "第%(current)s部分，共%(total)s部分"
+
+#: .\static\ji_survey\js\survey.js.c:461 .\static\ji_survey\js\survey.js.c:471
+msgid ""
+"You haven't finished the entire survey. Please check sections with "
+"exclamation marks."
+msgstr "您还没有完成此问卷，请检查有感叹号标记的章节。"
+
+#: .\static\ji_survey\js\survey.js.c:473
+msgid "You have completed the survey. You may now submit."
+msgstr "您已完成此问卷，可以提交。"

@@ -18,4 +18,13 @@ urlpatterns = patterns('',
     url(r'^$', views.index),
     url(r'^surveys/abet-alumni$', views.abet_alumni),
     url(r'^surveys/upload$', views.survey_upload),
+
+)
+
+js_info_dict = {
+    'packages': ('ji_survey',),
+}
+
+urlpatterns += patterns('',
+    (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
 )

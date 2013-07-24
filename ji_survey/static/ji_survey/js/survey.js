@@ -240,7 +240,7 @@
 		if (number == null)
 			number = -1;
 		return function(elem) {
-			elem.closest('.survey-question').data('error-message', '此问必答');
+			elem.closest('.survey-question').data('error-message', gettext('This question is required'));
 			if (number == -1) {
 				return Boolean($.trim(elem.formVal()));
 			} else {
@@ -259,7 +259,7 @@
 	}
 	function numeric() {
 		return function(elem) {
-			elem.closest('.survey-question').data('error-message', '请输入一个数字')
+			elem.closest('.survey-question').data('error-message', gettext('Please enter a number'))
 			var n = elem.formVal();
 
 			if (!elem.formVal())  //Don't check for empty
@@ -272,7 +272,7 @@
 	}
 	function numeric_range(min, max) {
 		return function(elem) {
-			elem.closest('.survey-question').data('error-message', '请输入' + min.toString() + "至" + max.toString() + "之间的一个数字")
+			elem.closest('.survey-question').data('error-message', interpolate(gettext("Please enter a number between %(min)s and %(max)s"), {min: min.toString(), max: max.toString()}, true))
 
 			if (!elem.formVal())  //Don't check for empty
 				return true;
@@ -290,11 +290,11 @@
 		}
 	}
 	function phonenumber() {
-		return regex(/^[0-9\+\-\ ]+$/i,"请输入一个电话号码");
+		return regex(/^[0-9\+\-\ ]+$/i, gettext("Please enter a valid telephone number"));
 	}
 
 	function email() {
-		return regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]+$/i,"请输入一个email地址");
+		return regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]+$/i, gettext("Please enter a valid email address"));
 	}
 	var form = $("#survey").form();
 	$(function() {
@@ -412,7 +412,7 @@
 			sectionButtons.removeClass('active');
 			$(sectionButtons[currentSectionIndex]).addClass('active');
 			progressBar.progressbar('value', (currentSectionIndex + 1) / (sections.size()) * 100);
-			progressLabel.text('Section ' + (currentSectionIndex + 1).toString() + '/' + (sections.size()).toString());
+			progressLabel.text(interpolate(gettext("Section %(current)s/%(total)s"), {current: (currentSectionIndex + 1).toString(), total: (sections.size()).toString()}, true));
 			window.scrollTo(null, 0);
 		}
 
@@ -458,7 +458,7 @@
 
 		$("#survey-form").submit(function(e) {
 			if (!checkAllSections()) {
-				alert("You haven't finished the entire survey. Please check sections with exclamation marks.");
+				alert(gettext("You haven't finished the entire survey. Please check sections with exclamation marks."));
 				e.preventDefault();
 				e.stopPropagation();
 				return false;
@@ -468,9 +468,9 @@
 		var nextBtn = $("#survey-controls .section-controls .btn-next");
 		$("#survey-check-button").click(function() {
 			if (!checkAllSections()) {
-				alert("You haven't finished the entire survey. Please check sections with exclamation marks.");
+				alert(gettext("You haven't finished the entire survey. Please check sections with exclamation marks."));
 			} else {
-				alert('You have completed the survey. You may now submit.');
+				alert(gettext('You have completed the survey. You may now submit.'));
 			}
 		});
 		$("#survey-check-button").before(prevBtn).after(nextBtn);

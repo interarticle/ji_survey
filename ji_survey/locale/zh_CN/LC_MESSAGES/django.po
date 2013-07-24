@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-24 14:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\templates\ji_survey\survey-done.j2.py:3
+#, fuzzy
+msgid "Submit Succeed"
+msgstr "递交成功"
+
+#: .\templates\ji_survey\survey-done.j2.py:4
+msgid "Thank you for completing the survey. You may close this window now."
+msgstr "感谢您完成此份问卷。您的反馈对我们非常重要。您可以关闭此窗口了。"
+
+#: .\templates\ji_survey\layout\survey.j2.py:18
+msgid ""
+"After you complete this question, you may be asked to fill out further "
+"information"
+msgstr "完成此问题后您可能需要回答一些其他相关问题"
+
+#: .\templates\ji_survey\layout\survey.j2.py:31
+msgid "Error!"
+msgstr "错误！"
+
+#: .\templates\ji_survey\layout\survey.j2.py:34
+msgid ""
+"Unfortunately, this survey cannot be done without JavaScript support on your "
+"browser. Please enable JavaScript and try again."
+msgstr ""
+"对不起，此问卷调查需要您的浏览器支持JavaScript。请打开JavaScript并刷新以完成"
+"问卷，谢谢。"
+
+#: .\templates\ji_survey\layout\survey.j2.py:56
+msgid "Sections"
+msgstr "章节"
+
+#: .\templates\ji_survey\layout\survey.j2.py:64
+msgid "Previous Section"
+msgstr "前一部分"
+
+#: .\templates\ji_survey\layout\survey.j2.py:65
+#: .\templates\ji_survey\layout\survey.j2.py:66
+msgid "Check"
+msgstr "检查问卷填写是否正确"
+
+#: .\templates\ji_survey\layout\survey.j2.py:68
+msgid "Next Section"
+msgstr "下一部分"
+
+#: .\templates\ji_survey\layout\survey.j2.py:71
+msgid "Submit"
+msgstr "提交问卷"

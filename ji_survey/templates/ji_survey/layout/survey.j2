@@ -15,7 +15,7 @@
 {{ super() }} - {{ self.survey_name() }}
 {%- endblock %}
 {% block page %}
-<form action="{{ url('views.survey_upload') }}" method="post" data-validation="required" data-dependant-message="After you complete this question, you may be asked to fill out further information" name="survey" id="survey-form">
+<form action="{{ url('views.survey_upload') }}" method="post" data-validation="required" data-dependant-message="{{ _("After you complete this question, you may be asked to fill out further information") }}" name="survey" id="survey-form">
 <span data-omit="1">
 	{% csrf_token %}
 	<input type="hidden" name="survey_key" value="{% block survey_key %}{% endblock %}">
@@ -28,10 +28,10 @@
 	<noscript>
 		<div class="error-message">
 			<div>
-				<em>Error!</em>
+				<em>{{ _("Error!") }}</em>
 			</div>
 			<div>
-				Unfortunately, this survey cannot be done without JavaScript support on your browser. Please enable JavaScript and try again.
+				{{ _("Unfortunately, this survey cannot be done without JavaScript support on your browser. Please enable JavaScript and try again.") }}
 			</div>
 		</div>
 		<style type="text/css">
@@ -53,7 +53,7 @@
 			<div class="progress-label"></div>
 		</div>
 		<div id="survey-sections-display" class="hidden">
-			<h3>Sections</h3>
+			<h3>{{ _("Sections") }}</h3>
 			<ul class="sections">
 				
 			</ul>
@@ -61,14 +61,14 @@
 		</div>
 		<div id="survey-controls">
 			<div class="section-controls">
-				<button class="btn-prev nav-btn" title="Previous Section">&lt;</button>
-				<button id="survey-check-button" class="btn-check nav-btn" title="Check">
-					<img src="{% static "ji_survey/images/check_32.png" %}" alt="Check" title="Check">
+				<button type="button" class="btn-prev nav-btn" title="{{ _("Previous Section") }}">&lt;</button>
+				<button id="survey-check-button" type="button" class="btn-check nav-btn" title="{{ _("Check") }}">
+					<img src="{% static "ji_survey/images/check_32.png" %}" alt="{{ _("Check") }}" title="{{ _("Check") }}">
 				</button>
-				<button class="btn-next nav-btn" title="Next Section">&gt;</button>
+				<button class="btn-next nav-btn" type="button" title="{{ _("Next Section") }}">&gt;</button>
 			</div>
 			<div class="submit">
-				<input id="survey-submit-button" type="submit" value="Submit" title="Submit" class="form-submit submit-btn">
+				<input id="survey-submit-button" type="submit" value="{{ _("Submit") }}" title="{{ _("Submit") }}" class="form-submit submit-btn">
 			</div>
 		</div>
 	</div>

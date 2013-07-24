@@ -12,7 +12,7 @@
 {{ super() }} sidebar-first survey
 {%- endblock %}
 {% block title -%}
-{{ super() }} - {{ self.survey_name() }}
+{{ self.survey_name() }} | {{ super() }} 
 {%- endblock %}
 {% block page %}
 <form action="{{ url('views.survey_upload') }}" method="post" data-validation="required" data-dependant-message="{{ _("After you complete this question, you may be asked to fill out further information") }}" name="survey" id="survey-form">

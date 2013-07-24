@@ -30,7 +30,7 @@ def survey_export_csv(modeladmin, request, queryset):
 		return map(lambda x: x.encode('utf-8'), array)
 
 	def translate_columns(columns):
-		return map(lambda x: translation[x] if x in translation else x, columns)
+		return map(lambda x: (translation[x] if translation[x] else x) if x in translation else x, columns)
 	for row in queryset:
 		data = yaml.safe_load(row.content)
 		if first:
@@ -39,6 +39,7 @@ def survey_export_csv(modeladmin, request, queryset):
 			survey_key = row.survey_key
 			for row in SurveyTranslation.objects.filter(survey_key=survey_key):
 				translation = yaml.safe_load(row.translation)
+				columns = sorted(list(set(columns + list(translation.iterkeys()))))
 				break
 			csvwriter.writerow(encode_array(translate_columns(columns)))
 		if row.survey_key != survey_key:

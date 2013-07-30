@@ -130,11 +130,17 @@ abet-alumni
 			</span>
 		</li>
 		<li class="survey-question">
-			<div class="question">你现在的状态是：</div>
+			<div class="question">
+				{% if not is_2009 -%}
+				你现在的状态是：
+				{%- else -%}
+				你即将进入的状态是：
+				{%- endif %}
+			</div>
 			<ul class="answer">
 				<li>
 					<label>
-						<input type="radio" name="1.3" value="A"> A. 已参加工作
+						<input type="radio" name="1.3" value="A"> A. {% if not is_2009 %}已{% endif %}参加工作
 					</label>
 				</li>
 				<li>
@@ -481,7 +487,13 @@ abet-alumni
 			<span class="answer"><input type="text" name="4.3" id=""></span>
 		</li>
 		<li  class="survey-question" data-validation="">
-			<div class="question">学院需要对校友抽样进行雇主调查，希望你能为我们提供你的雇主信息（可选）</div>
+			<div class="question">学院需要对校友抽样进行雇主调查，
+				{%- if not is_2009 -%}
+					希望你能为我们提供你的雇主信息
+				{%- else -%}
+					希望你能为我们提供曾经实习或实践过的雇主信息
+				{%- endif -%}
+				（可选）</div>
 			<div class="survey-question">
 				<span class="question">直接报告人职务：</span>
 				<span class="answer">

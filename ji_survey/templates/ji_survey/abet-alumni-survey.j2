@@ -24,10 +24,10 @@ abet-alumni
 {% block survey %}
 {% from "ji_survey/macros/survey-forms.j2" import single_choice, magnitude_radio_groups_table %}
 <section class="section">
+	{% if not is_2009 %}
 	<h2 class="section-title">
 		卷首语
 	</h2>
-	{% if not is_2009 %}
 	<p>亲爱的校友，</p>
 	<p>
 		密西根学院在2006年成立以来，为各行各业和知名学府的研究生院输送了大批具有国际意识和创新能力的领袖型工程人才。你们中有些已成长为所在行业的骨干，有些已经在科研领域取得累累硕果，有些在用所学的知识款款地回报社会，有些则选择继续深造以编织更加绚烂的未来。作为见证了你们走出密院、步入新的人生旅程的密院教师，我为你们所有人取得的成绩而感到无比骄傲。我同时相信，作为一名密院人，你们一定也为学院近年来取得的成就而荣耀。为了让我们的密院在现有成功的基础上走向更大的成功，我们希望能够吸收各方面的正能量。作为学院的重要组成部分，校友的建议和支持将成为学院未来发展的重要源动力。此次组织的问卷调查即是获得各位校友真情反馈的渠道之一，我谨代表全院教职员工和你们的学弟学妹向你们表示诚挚的谢意！
@@ -43,6 +43,10 @@ abet-alumni
 	</div>
 
 	{% else %}
+	<h2 class="section-title">
+		Preface
+	</h2>
+
 	<p>Dear Graduating Seniors,</p>
 
 	<p>

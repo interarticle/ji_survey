@@ -6,6 +6,7 @@ from django.core import serializers
 import yaml
 import json
 import csv
+import xlwt
 
 def survey_export_yaml(modeladmin, request, queryset):
 	response = HttpResponse(content_type="application/x-yaml; charset=utf-8")
@@ -19,15 +20,9 @@ def survey_export_json(modeladmin, request, queryset):
 	json.dump(data, response)
 	return response
 
-def survey_export_csv(modeladmin, request, queryset):
-	response = HttpResponse(content_type='text/csv; charset=utf-8')
-	response['Content-Disposition'] = 'attachment; filename="export.csv"'
-	response.write(u'\uFEFF'.encode('utf-8'))
-	csvwriter = csv.writer(response, quoting=csv.QUOTE_ALL)
+def format_survey(queryset):
 	first = True;
 	translation = {}
-	def encode_array(array):
-		return map(lambda x: x.encode('utf-8'), array)
 
 	def translate_columns(columns):
 		return map(lambda x: (translation[x] if translation[x] else x) if x in translation else x, columns)
@@ -41,16 +36,48 @@ def survey_export_csv(modeladmin, request, queryset):
 				translation = yaml.safe_load(row.translation)
 				columns = sorted(list(set(columns + list(translation.iterkeys()))))
 				break
-			csvwriter.writerow(encode_array(translate_columns(columns)))
+			yield translate_columns(columns)
 		if row.survey_key != survey_key:
 			raise Exception("You cannot select results with different survey_keys.")
 		sanitized = map(lambda x: data[x] if x in data else "", columns)
-		csvwriter.writerow(encode_array(sanitized))
+		yield sanitized
+
+def survey_export_csv(modeladmin, request, queryset):
+	response = HttpResponse(content_type='text/csv; charset=utf-8')
+	response['Content-Disposition'] = 'attachment; filename="export.csv"'
+	response.write(u'\uFEFF'.encode('utf-8'))
+	csvwriter = csv.writer(response, quoting=csv.QUOTE_ALL)
+
+	def encode_array(array):
+		return map(lambda x: x.encode('utf-8'), array)
+	for row in format_survey(queryset):
+		csvwriter.writerow(encode_array(row))
+	return response
+
+def survey_export_xls(modeladmin, request, queryset):
+	response = HttpResponse(content_type='application/octet-stream')
+	response['Content-Disposition'] = 'attachment; filename="export.xls"'
+	xlwb = xlwt.Workbook('utf-8')
+	xlws = xlwb.add_sheet("Survey Results")
+
+	regs = {'row': 0}
+	def writeRow(row):
+		col = 0
+		for val in row:
+			xlws.write(regs['row'], col, val)
+			col += 1
+		regs['row'] += 1
+
+	for row in format_survey(queryset):
+		writeRow(row)
+
+	xlwb.save(response)
+
 	return response
 
 class SurveyResultAdmin(admin.ModelAdmin):
 	list_display = ('id', 'survey_key', 'ip', 'submission_date', 'useragent')
-	actions = [survey_export_yaml, survey_export_json, survey_export_csv]
+	actions = [survey_export_yaml, survey_export_json, survey_export_csv, survey_export_xls]
 
 admin.site.register(SurveyResult, SurveyResultAdmin)
 

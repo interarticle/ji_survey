@@ -1,0 +1,441 @@
+{% extends "ji_survey/layout/survey.j2" %}
+{% block survey_name -%}
+毕业生调查问卷
+{%- endblock %}
+{% block survey_key -%}
+abet-alumni
+{%- endblock %}
+{% block css %}
+{{ super() }}
+<style type="text/css">
+	.aas-q-mt table {
+		width: 100%;
+	}
+	.aas-q-mt table thead tr.first th.first,
+	.aas-q-mt table tbody tr td.question.first {
+		width: 50%;
+		max-width: 50%;
+	}
+	.aas-q-mt table thead tr.first th.radio-group {
+		text-align: center;
+	}
+	.aas-q-mt table tr {
+		line-height: 1.5em;
+	}
+
+	.selections-instructions table th {
+		border-bottom: 1px;
+	}
+
+	.selections-instructions table {
+		margin: 0;
+	}
+
+	.selections-instructions table td {
+		margin: 0;
+		padding-right: 1em;
+	}
+
+	.selections-instructions table td:last-child {
+		padding-right: 0;
+	}
+
+	.selections-instructions {
+		border-top: 2px #333 solid;
+		border-bottom: 2px #333 solid;
+		margin-top: 0.5em;
+		display: inline-block;
+
+		padding: 4px;
+	}
+
+</style>
+{% endblock %}
+{% block survey %}
+{% from "ji_survey/macros/survey-forms.j2" import single_choice, magnitude_radio_groups_table %}
+<section class="section">
+	<h2 class="section-title">
+		卷首语
+	</h2>
+	<p>亲爱的交大密院校友：</p>
+	<p>
+		密西根学院在2006年成立以来，为各行各业和知名学府的研究生院输送了大批具有国际意识和创新能力的领袖型工程人才。你们中有些已成长为所在行业的骨干，有些已经在科研领域取得累累硕果，有些在用所学的知识款款地回报社会，有些则选择继续深造以编织更加绚烂的未来。作为见证了你们走出密院、步入新的人生旅程的密院教师，我为你们所有人取得的成绩而感到无比骄傲。我同时相信，作为一名密院人，你们一定也为学院近年来取得的成就而荣耀。为了让我们的密院在现有成功的基础上走向更大的成功，我们希望能够吸收各方面的正能量。作为学院的重要组成部分，校友的建议和支持将成为学院未来发展的重要源动力。此次组织的问卷调查即是获得各位校友真情反馈的渠道之一，我谨代表全院教职员工和你们的学弟学妹向你们表示诚挚的谢意！
+	</p>
+	<p>
+		最后，祝你们在今后的职业生涯中取得更大的辉煌。一次密院人，终生密院人！
+	</p>
+
+	<div style="width:10em; float:right;">
+		郑 刚 <br>
+		本科教学副院长 <br>
+		交大密西根学院 <br>
+	</div>
+	<div class="clear:both"></div>
+</section>
+<section class="section">
+	<h2 class="section-title">
+		1.	基本信息
+	</h2>
+	<ol class="survey-question-list">
+		<li class="survey-question">
+			<span class="survey-question">
+				<span class="question">姓名：</span>
+				<span class="answer"><input type="text" name="1.1.1"></span>
+			</span>
+			<span class="survey-question" data-validation="required; regex(/51\d{8}/, '请输入10位学号')">
+				<span class="question">学号：</span>
+				<span class="answer"><input type="text" name="1.1.2"></span>
+			</span>
+			<span class="survey-question">
+				<span class="question">性别：</span>
+				<span class="answer">
+					<select name="1.1.3" id="">
+						<option value="" selected="selected">---</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					</select>
+				</span>
+			</span>
+			<span class="survey-question">
+				<span class="question">
+					专业：
+				</span>
+				<span class="answer">
+					<select name="1.1.4" id="">
+						<option value="" selected="selected">---</option>
+						<option value="ECE">ECE</option>
+						<option value="ME">ME</option>
+					</select>
+				</span>
+			</span>
+			<span class="survey-question">
+				<span class="question">
+					是否参加双学位：
+				</span>
+				<span class="answer">
+					<select name="1.1.5" id="">
+						<option value="" selected="selected">---</option>
+						<option value="是">是</option>
+						<option value="否">否</option>
+					</select>
+				</span>
+			</span>
+		</li>
+		<li class="survey-question">
+			<span class="question">联系方式：</span><br/>
+			<span class="survey-question" data-validation="required; email">
+				<span class="question">Email：</span>
+				<span class="answer"><input type="text" name="1.2.1"></span>
+			</span>
+			<span class="survey-question" data-validation="required; phonenumber">
+				<span class="question">手机号码：</span>
+				<span class="answer"><input type="text" name="1.2.2"></span>
+			</span>
+			<span class="survey-question" data-validation="">
+				<span class="question">微信号：</span>
+				<span class="answer"><input type="text" name="1.2.3"></span>
+			</span>
+		</li>
+		<li class="survey-question">
+			<div class="question">
+				您现在的状态是：
+			</div>
+			<ul class="answer">
+				<li>
+					<label>
+						<input type="radio" name="1.3" value="A"> A. 已参加工作
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" name="1.3" value="B"> B. 国内在读硕士/博士
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" name="1.3" value="C"> C. 国外在读硕士/博士
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" name="1.3" value="D"> D. 其他
+					</label>
+					<span data-validation=""><input type="text" name="1.3.D"></span>
+				</li>
+			</ul>
+		</li>
+		<li class="survey-question" data-condition="{1.3}=='A'">
+			<div>
+				<span class="survey-question">
+					<span class="question">您即将供职的公司：</span>
+					<span class="answer"><input type="text" name="1.4.1"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">职位：</span>
+					<span class="answer"><input type="text" name="1.4.2"></span>
+				</span>
+			</div>
+		</li>
+		<li class="survey-question" data-condition="{1.3} == 'B' || {1.3} == 'C'">
+			<div>
+				<span class="survey-question">
+					<span class="question">您即将就读的研究生院校：</span>
+					<span class="answer"><input type="text" name="1.5.1"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">专业：</span>
+					<span class="answer"><input type="text" name="1.5.2"></span>
+				</span>
+				<span class="survey-question">
+					<span class="question">学历：</span>
+					<span class="answer">
+						<select name="1.5.3" id="">
+							<option value="" selected="selected">---</option>
+							<option value="硕士">硕士</option>
+							<option value="博士">博士</option>
+						</select>
+					</span>
+				</span>
+			</div>
+		</li>
+		<li class="survey-question">
+			<div class="question">
+				你是否即将从事工程类的工作或者就读工程类专业？
+			</div>
+			<ul class="answer">
+				<li>
+					<label>
+						<input type="radio" name="1.6" value="是"> A. 是
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="radio" name="1.6" value="否"> B. 否
+					</label>
+				</li>
+			</ul>
+		</li>
+	</ol>
+</section>
+<section class="section">
+	<h2 class="section-title">
+		2.	知识运用
+	</h2>
+	<div class="survey-question-list aas-q-mt">
+		<div class="question">自我表现评价和JI的帮助程度评价</div>
+		<div class="notes">
+			* 自我表现评价（1-5）：5-掌握很好；1-掌握不如人意<br>
+				JI的帮助程度评价（1-5）：5-帮助很大；1-几乎没有帮助
+				{% set desc_5nums = {1: '1', 2: '2', 3: '3', 4: '4', 5: '5'} %}
+		</div>
+		{{ magnitude_radio_groups_table('2', ['1.	数学、物理、化学知识', '2.	设计并实施实验', '3.	程序设计', '4.	产品设计', '5.	硬件开发', '6.	机械设计'], ['自我表现', 'JI的帮助程度'], 5, '专业知识能力', [desc_5nums, desc_5nums]) }}
+	</div>
+</section>
+<section class="section">
+	<h2 class="section-title">
+		3.	延伸能力
+	</h2>
+	<div class="survey-question-list">
+		<div class="question">自我表现评价和JI的帮助程度评价</div>
+		<div class="notes">
+			* 自我表现评价（1-5）：5-表现很好；1-表现不如人意<br>
+			JI的帮助程度评价（1-5）：5-帮助很大；1-几乎没有帮助
+			{% set desc_5nums = {1: '1', 2: '2', 3: '3', 4: '4', 5: '5'} %}
+		</div>
+
+		<div class="aas-q-mt">
+		{{ magnitude_radio_groups_table('3.1', ['1.	发现问题', '2.	解决问题', '3.	数据、图像分析', '4.	创造性工作', '5.	尝试接触新鲜事物，并快速掌握新的知识和技能'], ['自我表现', 'JI的帮助程度'], 5, '3.1 理工科相关能力', [desc_5nums, desc_5nums]) }}
+
+		{{ magnitude_radio_groups_table('3.2', ['1.	充分理解自己在团队中的角色和工作任务', '2.	积极提出对于团队任务的问题和建议', '3.	善于协调不同意见和成员间关系', '4.	善于引导工作进展', '5.	和不同性格和处事风格的成员相处融洽', '6.	别人能很好的理解我的工作文件（邮件、工作报告等）', '7.	在展示团队项目成果的过程中表现积极'], ['自我表现', 'JI的帮助程度'], 5, '3.2 团队和沟通能力', [desc_5nums, desc_5nums]) }}
+
+		{{ magnitude_radio_groups_table('3.3', ['1.	对工程领域之外有涉猎/兴趣/了解', '2.	对时事、文化的了解', '3.	工作或科研中跨学科知识的运用'], ['自我表现', 'JI的帮助程度'], 5, '3.3 多学科学习及运用能力', [desc_5nums, desc_5nums]) }}
+
+		{{ magnitude_radio_groups_table('3.4', ['1.	工作中坚持职业道德（hint：如保守机密，保证报表真实性，公私分明）', '2.	强烈意识到自身工作对社会的重要性（hint：如自觉重视工程设计对环境的影响）', '3.	无论接受什么工作，都以责任心尽力完成'], ['自我表现', 'JI的帮助程度'], 5, '3.4 行业道德及责任心', [desc_5nums, desc_5nums]) }}
+		</div>
+	</div>
+</section>
+<section class="section">
+	<h2 class="section-title">
+		4.	对学院整体评价
+	</h2>
+	<ol class="survey-question-list">
+		<li class="survey-question">
+			<div class="question">
+				请回顾你的大学生活,为学院的人才培养进行评价，并从以下选项中选择你因此而获得的能力。
+				<div class="selections-instructions">
+					<table>
+						<thead>
+							<tr>
+								<th>选项</th>
+								<th>获得的能力</th>
+								<th>能力说明</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>A</td>
+								<td>优良的专业素养</td>
+								<td>敬业、诚信和综合判断能力</td>
+							</tr>
+							<tr>
+							    <td>B</td>
+							    <td>宽广的人文基础</td>
+							    <td>人文修养、批判性思维、创新意识和沟通表达能力</td>
+							</tr>
+							<tr>
+							    <td>C</td>
+							    <td>扎实的科学训练</td>
+							    <td>应用数理化，计算机等基础科学和工具的能力</td>
+							</tr>
+							<tr>
+							    <td>D</td>
+							    <td>深入的专业知识</td>
+							    <td>紧跟时代步伐，在本领域继续深造或就业必须的专业知识</td>
+							</tr>
+							<tr>
+							    <td>E</td>
+							    <td>优异的工程能力</td>
+							    <td>发现，定义和解决实际工程问题的能力</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="answer">
+				<ol class="survey-question-list">
+					<li class="survey-question">
+						<span class="survey-question">
+							<span class="question">对我帮助最大的一门JI课程是</span>
+							<span class="answer"><input type="text" name="4.1.1.1"></span>
+						</span>
+						<span class="survey-question">
+							<span class="question">，因为它给我带来</span>
+							<span class="answer">
+								<select name="4.1.1.2" id="">
+									<option value="" selected="selected">---</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
+								</select>
+							</span>
+						</span>
+						。
+					</li>
+					<li class="survey-question">
+						<span class="survey-question">
+							<span class="question">对我帮助最大的一位JI老师是</span>
+							<span class="answer"><input type="text" name="4.1.2.1"></span>
+						</span>
+						<span class="survey-question">
+							<span class="question">，因为他/她使我获得</span>
+							<span class="answer">
+								<select name="4.1.2.2" id="">
+									<option value="" selected="selected">---</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
+								</select>
+							</span>
+						</span>
+						。
+					</li>
+					<li class="survey-question">
+						<span class="survey-question">
+							<span class="question">我收获最大的一项JI学术活动是</span>
+							<span class="answer"><input type="text" name="4.1.3.1"></span>
+						</span>
+						（如：PRP、IPP、大学生数学建模大赛、新生机械创意大赛等）
+						<span class="survey-question">
+							<span class="question">，因为它给我带来</span>
+							<span class="answer">
+								<select name="4.1.3.2" id="">
+									<option value="" selected="selected">---</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
+								</select>
+							</span>
+						</span>
+						。
+					</li>
+					<li class="survey-question">
+						<span class="survey-question">
+							<span class="question">我收获最大的一项JI课余活动是</span>
+							<span class="answer"><input type="text" name="4.1.4.1"></span>
+						</span>
+						（如：企业参观、参与学生会、企业实习、教授午餐会、班级活动、与年级老师交流谈心等）
+						<span class="survey-question">
+							<span class="question">，因为它给我带来</span>
+							<span class="answer">
+								<select name="4.1.4.2" id="">
+									<option value="" selected="selected">---</option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+									<option value="E">E</option>
+								</select>
+							</span>
+						</span>
+						。
+					</li>
+				</ol>
+			</div>
+		</li>
+		<li class="survey-question">
+			<div class="question">
+				请你对学院的教学管理进行评价，并按照满意度进行打分
+			</div>
+			<div class="notes">
+				满意度评价（1-5）：5-非常满意；1-非常不满意
+			</div>
+			<div class="answer aas-q-mt">
+				{{ magnitude_radio_groups_table('4.2', ['1. 课程体系', '2. 教学内容', '3. 教材及参考书', '4. 教学方法与手段', '5. 师资配备', '6. 教学效果', '7. 考试及考核方式', '8. 教学组织及管理'], ['满意度'], 5, '学院教学管理', [desc_5nums]) }}
+			</div>
+		</li>
+	</ol>
+</section>
+<section class="section">
+	<h2 class="section-title">
+		5.	反馈
+	</h2>
+	<ol class="survey-question-list">
+		<li class="survey-question">
+			<span class="question">你认为我们的问卷最大的优点是：</span>
+			<span class="answer"><input type="text" name="5.1" id=""></span>
+		</li>
+		<li class="survey-question">
+			<span class="question">你认为我们的问卷最大的缺点是：</span>
+			<span class="answer"><input type="text" name="5.2" id=""></span>
+		</li>
+		<li class="survey-question">
+			<span class="question">你是否愿意成为所在片区的校友会志愿者？</span>
+			&emsp;
+			<span class="answer">
+				<label>
+					<input type="radio" name="5.3" value="是"> 是
+				</label>
+				&emsp;
+				<label>
+					<input type="radio" name="5.3" value="否"> 否
+				</label>
+			</span>
+		</li>
+	</ol>
+
+	<div>
+		<p style="text-align: right">感谢填写！</p>
+		<div style="margin-bottom: 2em;"></div>
+		<p style="text-align: right">
+			交大密西根学院<br>
+			2014年7月
+		</p>
+	</div>
+</section>
+{% endblock %}

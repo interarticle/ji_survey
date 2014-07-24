@@ -56,8 +56,10 @@ def survey_upload(request):
 	return render_to_response('ji_survey/survey-done.j2')
 
 @never_ever_cache
-def abet_alumni(request):
+def survey(survey_definition, request):
 	data = {}
 	data.update(csrf(request))
 	data['is_2009'] = '2009' in request.GET;
-	return render_to_response('ji_survey/abet-alumni-survey.j2', data)
+	return render_to_response(
+        'ji_survey/{template}'.format(template=survey_definition.template),
+        data)

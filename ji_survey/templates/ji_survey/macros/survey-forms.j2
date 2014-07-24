@@ -47,7 +47,7 @@
 				<td class="question first">{{ item }}</td>
 				{% set question_index = loop.index %}
 				{% for item in types %}
-					{% if loop.index > 1 %}
+					{% if loop.index >1 %}
 					<td></td>
 					{% endif %}
 					{{ table_magnitude_radio_group(name ~ '.' ~ question_index ~ '.' ~ loop.index, magnitude, descs[loop.index0] if descs[loop.index0] else {}) }}

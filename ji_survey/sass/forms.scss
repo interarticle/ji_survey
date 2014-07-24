@@ -122,8 +122,18 @@
       background: #feffdd url(../../images/error_16.png) no-repeat 99% center;
     }
   }
+
+  span.survey-question {
+    white-space: nowrap;
+    .survey-question {
+      // Early detect improper nesting
+      background-color: red !important;
+    }
+    // margin-right: 0.3em;
+  }
+
   .magnitude-radio-slider {
-    margin-right: 1.8em;
+    margin-right: 18%;
     margin-left: 0.3em;
   }
 

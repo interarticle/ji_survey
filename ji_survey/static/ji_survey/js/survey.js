@@ -289,6 +289,12 @@
 			return pattern.test(elem.formVal());
 		}
 	}
+	function choices(items, message) {
+		return function(elem) {
+			elem.closest('.survey-question').data('error-message', message);
+			return $.inArray($.trim(elem.formVal()), items);
+		};
+	}
 	function phonenumber() {
 		return regex(/^[0-9\+\-\ ]+$/i, gettext("Please enter a valid telephone number"));
 	}

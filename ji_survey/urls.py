@@ -1,6 +1,9 @@
 from django.conf.urls import patterns, include, url
 from . import views
 
+from ji_survey.survey_definitions import get_urls
+
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -16,9 +19,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index),
-    url(r'^surveys/abet-alumni$', views.abet_alumni),
     url(r'^surveys/upload$', views.survey_upload),
-
 )
 
 js_info_dict = {
@@ -28,3 +29,5 @@ js_info_dict = {
 urlpatterns += patterns('',
     (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
 )
+
+urlpatterns += get_urls()

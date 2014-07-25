@@ -8,15 +8,30 @@ import json
 import csv
 import xlwt
 
+
+def _parse_query_row(row):
+	obj = yaml.safe_load(row.content)
+	obj['validation_result'] = row.validation_result
+	obj['submission_date'] = row.submission_date.isoformat(' ')
+	obj['ip_address'] = row.ip
+
+	return obj
+
+def _parse_queryset(queryset):
+	for row in queryset:
+		if not row.submitted: continue
+		
+		yield _parse_query_row(row)
+
 def survey_export_yaml(modeladmin, request, queryset):
 	response = HttpResponse(content_type="application/x-yaml; charset=utf-8")
-	data = map(lambda x: yaml.safe_load(x.content), queryset)
+	data = list(_parse_queryset(queryset))
 	yaml.safe_dump(data, response, encoding='utf-8', allow_unicode = True)
 	return response
 
 def survey_export_json(modeladmin, request, queryset):
 	response = HttpResponse(content_type="application/json")
-	data = map(lambda x: yaml.safe_load(x.content), queryset)
+	data = list(_parse_queryset(queryset))
 	json.dump(data, response)
 	return response
 
@@ -27,7 +42,9 @@ def format_survey(queryset):
 	def translate_columns(columns):
 		return map(lambda x: (translation[x] if translation[x] else x) if x in translation else x, columns)
 	for row in queryset:
-		data = yaml.safe_load(row.content)
+		if not row.submitted:
+			continue
+		data = _parse_query_row(row)
 		if first:
 			first = False
 			columns = sorted(list(data.iterkeys()))
@@ -76,7 +93,7 @@ def survey_export_xls(modeladmin, request, queryset):
 	return response
 
 class SurveyResultAdmin(admin.ModelAdmin):
-	list_display = ('id', 'survey_key', 'ip', 'submission_date', 'useragent')
+	list_display = ('id', 'survey_key', 'ip', 'submission_date', 'useragent', 'validation_result')
 	actions = [survey_export_yaml, survey_export_json, survey_export_csv, survey_export_xls]
 
 admin.site.register(SurveyResult, SurveyResultAdmin)

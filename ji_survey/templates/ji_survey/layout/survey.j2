@@ -18,6 +18,8 @@
 <form action="{{ url('views.survey_upload') }}" method="post" data-validation="required" data-dependant-message="{{ _("After you complete this question, you may be asked to fill out further information") }}" name="survey" id="survey-form">
 <span data-omit="1">
 	{% csrf_token %}
+	<input type="hidden" name="_verification" id="verification-key">
+	<input type="hidden" name="_challenge" id="challenge-key">
 	<input type="hidden" name="survey_key" value="{% block survey_key %}{% endblock %}">
 </span>
 {{ super() }}

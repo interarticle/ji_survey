@@ -469,6 +469,55 @@
 				e.stopPropagation();
 				return false;
 			}
+
+			function Speck64(k) {
+				var alpha = 7;
+				var beta = 2;
+				var T = 22;
+				function mask(num) {
+					return num & -1;
+				}
+
+				function rotateLeft(num, by) {
+					var rotation = num << by;
+					return mask(rotation | (num >>> (32 - by)));
+				}
+
+				function rotateRight(num, by) {
+					var rotation = num >>> by;
+					return mask(rotation | (num << (32 - by)));
+				}
+
+				function convert32tof(num) {
+					if (num >= 0) return num;
+					return num + 4294967296;
+				}
+
+				this.encrypt = function(val) {
+					var x = Math.floor(val / Math.pow(2, 32));
+					var y = mask(val);
+
+					for (var i = 0; i < T; i++) {
+						x = mask(convert32tof(rotateRight(x, alpha)) + convert32tof(y)) ^ k[i];
+						y = rotateLeft(y, beta) ^ x;
+					}
+
+					return convert32tof(x ^ y);
+				}
+			}
+
+			var timestamp = (new Date()).getTime();
+
+			var s = new Speck64([
+				2482838457, 4118176477, 2186512637, 2853099636, 1670965135, 1939273452,
+				32483733, 104330877, 1830035343, 135608872, 4106942868, 4142733777,
+				4056360673,9395589, 1580122221, 3344849734, 4173263305, 4070394753,
+				4099697325, 3148460326, 1056492960, 389149080])
+
+			var verification = s.encrypt(timestamp);
+
+			$('#verification-key').val(String(verification));
+			$('#challenge-key').val(String(timestamp));
 		})
 		var prevBtn = $("#survey-controls .section-controls .btn-prev");
 		var nextBtn = $("#survey-controls .section-controls .btn-next");

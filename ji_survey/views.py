@@ -87,7 +87,8 @@ def survey_upload(request):
 
 	validation_result = 'NA'
 
-	if survey.get('_verification') and survey.get('_challenge'):
+	if (survey.get('_verification') and survey.get('_challenge') and
+			survey['_verification'][0] and survey['_challenge'][0]):
 		validation_result = 'F'
 
 		try:

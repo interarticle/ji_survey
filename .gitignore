@@ -5,3 +5,4 @@ static-collect/*
 production
 *.sqlite3
 db/*
+local_tools/*

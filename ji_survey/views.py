@@ -1,5 +1,6 @@
 # Create your views here.
 import time
+import logging
 
 from django.http import HttpResponse
 from django.http import Http404
@@ -86,7 +87,7 @@ def survey_upload(request):
 
 	validation_result = 'NA'
 
-	if '_verification' in survey and '_challenge' in survey:
+	if survey.get('_verification') and survey.get('_challenge'):
 		validation_result = 'F'
 
 		try:
@@ -105,7 +106,6 @@ def survey_upload(request):
 
 			validation_result = 'Y'
 		except Exception:
-			import logging
 			logging.exception('broke!')
 			pass
 
@@ -119,7 +119,7 @@ def survey_upload(request):
 	result.submission_date = timezone.now()
 	result.submitted = True
 	result.content =  yaml.safe_dump(survey, encoding='utf-8', allow_unicode = True, default_flow_style=False)
-	result.ip = request.META['REMOTE_ADDR']
+	result.ip = request.META.get('HTTP_X_FORWARDED_FOR') or request.META['REMOTE_ADDR']
 	result.useragent = request.META['HTTP_USER_AGENT']
 	result.survey_key = survey_key
 	result.validation_result = validation_result

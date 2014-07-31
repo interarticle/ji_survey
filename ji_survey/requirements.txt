@@ -1,0 +1,6 @@
+Coffin==0.3.8
+Django==1.6.5
+Jinja2==2.7.3
+PyYAML==3.11
+argparse==1.2.1
+xlwt==0.7.5

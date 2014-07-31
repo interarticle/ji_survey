@@ -522,11 +522,7 @@
 		var prevBtn = $("#survey-controls .section-controls .btn-prev");
 		var nextBtn = $("#survey-controls .section-controls .btn-next");
 		$("#survey-check-button").click(function() {
-			if (!checkAllSections()) {
-				alert(gettext("You haven't finished the entire survey. Please check sections with exclamation marks."));
-			} else {
-				alert(gettext('You have completed the survey. You may now submit.'));
-			}
+			$("#survey-form").submit()
 		});
 		$("#survey-check-button").before(prevBtn).after(nextBtn);
 

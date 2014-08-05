@@ -82,9 +82,13 @@ abet-alumni-2014
 				<span class="question">姓名：</span>
 				<span class="answer"><input type="text" name="1.1.1"></span>
 			</span>
-			<span class="survey-question" data-validation="required; regex(/51\d{8}/, '请输入10位学号')">
+			<span class="survey-question" data-validation="required; regex(/^51\d{8}$/, '请输入10位学号')">
 				<span class="question">学号：</span>
 				<span class="answer"><input type="text" name="1.1.2"></span>
+			</span>
+			<span class="survey-question" data-validation="required; regex(/^[A-Z]\d{7}$/, '请输入班号')">
+				<span class="question">班号：</span>
+				<span class="answer"><input type="text" name="1.1.6"></span>
 			</span>
 			<span class="survey-question">
 				<span class="question">性别：</span>

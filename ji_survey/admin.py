@@ -44,6 +44,8 @@ def format_survey(queryset):
 	for row in queryset:
 		if not row.submitted:
 			continue
+		if not row.survey_key:
+			continue
 		data = _parse_query_row(row)
 		if first:
 			first = False
